@@ -810,6 +810,268 @@
     ];
     </script>
 
-    <script src="app.js"></script>
+        <script>
+    // ============================================================
+    // Unesito - Todo el JS incrustado
+    // ============================================================
+    let NORMAS = [];
+    let currentChapter = "all";
+    let searchQuery = "";
+    let selectedArticleForAsk = null;
+
+    const AVATAR_EXPRESSIONS = {
+        smile: "M46 54 Q50 58 54 54",
+        thinking: "M46 54 Q50 54 54 54",
+        sad: "M46 56 Q50 53 54 56"
+    };
+
+    document.addEventListener("DOMContentLoaded", () => {
+        console.log("🚀 Unesito iniciando...");
+
+        // Cargar datos
+        if (typeof NORMAS_DATA_INLINE !== 'undefined') {
+            NORMAS = NORMAS_DATA_INLINE;
+            console.log(`✅ ${NORMAS.length} artículos cargados`);
+        } else {
+            console.error("❌ NORMAS_DATA_INLINE no está definido");
+        }
+
+        renderArticles();
+        setupEventListeners();
+        updateWelcomeTime();
+    });
+
+    function renderArticles() {
+        const articlesGrid = document.getElementById("articles-grid");
+        const articlesCount = document.getElementById("articles-count");
+        if (!articlesGrid) return;
+
+        articlesGrid.innerHTML = "";
+
+        const filtered = NORMAS.filter(art => {
+            const matchesChapter = currentChapter === "all" || art.capitulo_num === parseInt(currentChapter);
+            const q = normalizeText(searchQuery);
+            const matchesSearch = q === "" ||
+                normalizeText(art.numero).includes(q) ||
+                normalizeText(art.titulo).includes(q) ||
+                normalizeText(art.texto).includes(q) ||
+                (art.palabras_clave && art.palabras_clave.some(kw => normalizeText(kw).includes(q)));
+            return matchesChapter && matchesSearch;
+        });
+
+        articlesCount.textContent = `${filtered.length} ${filtered.length === 1 ? 'artículo' : 'artículos'}`;
+
+        if (filtered.length === 0) {
+            articlesGrid.innerHTML = `
+                <div style="grid-column: 1/-1; text-align: center; padding: 40px; background: #FFF; border-radius: 16px; border: 1px dashed #CBD5E1;">
+                    <span class="material-symbols-outlined" style="font-size: 48px; color: #94A3B8;">search_off</span>
+                    <h3 style="margin-top: 12px; color: #0A2A5C;">No se encontraron artículos</h3>
+                </div>`;
+            return;
+        }
+
+        filtered.forEach(art => {
+            const card = document.createElement("div");
+            card.className = "article-card";
+            card.innerHTML = `
+                <div class="card-top">
+                    <span class="category-tag">${art.capitulo.split(':')[0]} • ${art.seccion || 'Reglamento'}</span>
+                    <h3>${art.numero}: ${art.titulo}</h3>
+                    <p>${art.texto}</p>
+                </div>
+                <div class="card-bottom">
+                    <button class="btn-link read-more-btn" data-id="${art.id}">
+                        Leer completo <span class="material-symbols-outlined">arrow_forward</span>
+                    </button>
+                </div>`;
+            articlesGrid.appendChild(card);
+        });
+
+        document.querySelectorAll(".read-more-btn").forEach(btn => {
+            btn.addEventListener("click", (e) => {
+                openModal(parseInt(e.currentTarget.getAttribute("data-id")));
+            });
+        });
+    }
+
+    function setupEventListeners() {
+        const searchInput = document.getElementById("search-input");
+        const clearSearchBtn = document.getElementById("clear-search");
+        const chaptersNav = document.getElementById("chapters-nav");
+        const currentSectionTitle = document.getElementById("current-section-title");
+
+        searchInput.addEventListener("input", (e) => {
+            searchQuery = e.target.value;
+            clearSearchBtn.style.display = searchQuery.trim() !== "" ? "flex" : "none";
+            renderArticles();
+        });
+
+        clearSearchBtn.addEventListener("click", () => {
+            searchInput.value = "";
+            searchQuery = "";
+            clearSearchBtn.style.display = "none";
+            renderArticles();
+        });
+
+        chaptersNav.addEventListener("click", (e) => {
+            const btn = e.target.closest(".chapter-btn");
+            if (!btn) return;
+            document.querySelectorAll(".chapter-btn").forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+            currentChapter = btn.getAttribute("data-cap");
+            currentSectionTitle.textContent = currentChapter === "all"
+                ? "Artículos de las Normas de Convivencia"
+                : btn.textContent.trim();
+            renderArticles();
+        });
+
+        document.getElementById("close-modal").addEventListener("click", closeModal);
+        document.getElementById("article-modal").addEventListener("click", (e) => {
+            if (e.target.id === "article-modal") closeModal();
+        });
+
+        document.getElementById("modal-ask-btn").addEventListener("click", () => {
+            if (selectedArticleForAsk) {
+                const q = `¿Qué dice el ${selectedArticleForAsk.numero}?`;
+                closeModal();
+                openChat();
+                handleUserMessage(q);
+            }
+        });
+
+        document.getElementById("avatar-trigger").addEventListener("click", openChat);
+        document.getElementById("close-chat").addEventListener("click", closeChat);
+
+        document.getElementById("chat-form").addEventListener("submit", (e) => {
+            e.preventDefault();
+            const input = document.getElementById("chat-input");
+            const text = input.value.trim();
+            if (!text) return;
+            input.value = "";
+            handleUserMessage(text);
+        });
+
+        document.getElementById("chat-messages").addEventListener("click", (e) => {
+            const btn = e.target.closest(".suggest-btn");
+            if (btn) handleUserMessage(btn.getAttribute("data-query"));
+        });
+    }
+
+    function openModal(id) {
+        const art = NORMAS.find(a => a.id === id);
+        if (!art) return;
+        selectedArticleForAsk = art;
+        document.getElementById("modal-category").textContent = art.capitulo;
+        document.getElementById("modal-title").textContent = `${art.numero}: ${art.titulo}`;
+        document.getElementById("modal-content").innerHTML = (art.texto || "").replace(/\n/g, "<br>");
+        const kw = document.getElementById("modal-keywords");
+        kw.innerHTML = "";
+        (art.palabras_clave || []).forEach(k => {
+            const tag = document.createElement("span");
+            tag.className = "keyword-tag";
+            tag.textContent = k;
+            kw.appendChild(tag);
+        });
+        document.getElementById("article-modal").style.display = "flex";
+    }
+
+    function closeModal() {
+        document.getElementById("article-modal").style.display = "none";
+        selectedArticleForAsk = null;
+    }
+
+    function openChat() {
+        document.getElementById("chat-widget").style.display = "flex";
+        document.getElementById("avatar-bubble").style.display = "none";
+        document.getElementById("notif-badge").style.display = "none";
+    }
+
+    function closeChat() {
+        document.getElementById("chat-widget").style.display = "none";
+    }
+
+    function updateWelcomeTime() {
+        const wt = document.getElementById("welcome-time");
+        if (wt) wt.textContent = formatTime(new Date());
+    }
+
+    function formatTime(d) {
+        let h = d.getHours(), m = d.getMinutes();
+        const ap = h >= 12 ? 'PM' : 'AM';
+        h = h % 12 || 12;
+        m = m < 10 ? '0' + m : m;
+        return `${h}:${m} ${ap}`;
+    }
+
+    function normalizeText(t) {
+        if (!t) return "";
+        return t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+            .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()?¿¡"']/g, "");
+    }
+
+    async function handleUserMessage(text) {
+        const s = document.getElementById("chat-suggestions");
+        if (s) s.remove();
+        appendMessage(text, "user");
+        document.getElementById("typing-indicator").style.display = "flex";
+
+        setTimeout(() => {
+            document.getElementById("typing-indicator").style.display = "none";
+            const r = localChatEngine(text);
+            appendMessage(r.reply, "assistant", r.article, r.fallback);
+        }, 700);
+    }
+
+    function appendMessage(text, sender, article, fallback) {
+        const cont = document.getElementById("chat-messages");
+        const div = document.createElement("div");
+        div.className = `message ${sender}`;
+        let html = `<div class="message-bubble">${(text || "").replace(/\n/g, "<br>")}`;
+        if (article) {
+            html += `<div class="chat-action-box"><button class="btn-chat-action secondary-btn read-article-chat-btn" data-id="${article.id}"><span class="material-symbols-outlined">menu_book</span> Leer ${article.numero}</button></div>`;
+        }
+        html += `</div><span class="message-time">${formatTime(new Date())}</span>`;
+        div.innerHTML = html;
+        cont.appendChild(div);
+        cont.scrollTop = cont.scrollHeight;
+
+        const btn = div.querySelector(".read-article-chat-btn");
+        if (btn) btn.addEventListener("click", (e) => openModal(parseInt(e.currentTarget.getAttribute("data-id"))));
+    }
+
+    function localChatEngine(query) {
+        const q = normalizeText(query);
+
+        if (["hola", "buenas", "saludos", "unesito"].some(g => q.includes(g))) {
+            return { reply: "¡Hola! Soy **Unesito**, tu asistente virtual de las Normas de Convivencia UNES (Acuerdo N° 0000692). 👮‍♂️👋\n\n¿Sobre qué tema necesitas orientación?", mood: "smile" };
+        }
+
+        const artMatch = q.match(/(?:articulo|art|articul)\s*(\d+)/);
+        if (artMatch) {
+            const num = parseInt(artMatch[1]);
+            const t = NORMAS.find(n => n.id === num);
+            if (t) return { reply: `Según el **${t.numero}** del **${t.capitulo}**:\n\n"${t.texto}"`, article: t, mood: "smile" };
+        }
+
+        let best = null, maxM = 0;
+        const words = q.split(/\s+/).filter(w => w.length > 2);
+        NORMAS.forEach(art => {
+            let m = 0;
+            (art.palabras_clave || []).forEach(kw => { if (q.includes(normalizeText(kw))) m += 2.5; });
+            words.forEach(w => {
+                if (normalizeText(art.titulo).includes(w)) m += 1.5;
+                if (normalizeText(art.texto).includes(w)) m += 0.5;
+            });
+            if (m > maxM) { maxM = m; best = art; }
+        });
+
+        if (best && maxM >= 2) {
+            return { reply: `Según el **${best.numero}** (**${best.capitulo}**):\n\n"${best.texto}"`, article: best, mood: "smile" };
+        }
+
+        return { reply: "No encontré información exacta. ¿Puedes reformular tu pregunta?\n\nEjemplo: *'¿Cuáles son las faltas leves?'* o *'artículo 90'*", mood: "sad" };
+    }
+
+    console.log("✅ app.js cargado completamente");
+    </script>
 </body>
-</html>
