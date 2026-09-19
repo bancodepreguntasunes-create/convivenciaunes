@@ -4,1046 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unesito - Normas de Convivencia UNES (Acuerdo N°0000692)</title>
-
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <!-- Material Symbols -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-
-    <style>
-        /* ============================================
-           VARIABLES Y RESET
-           ============================================ */
-        :root {
-            --bg-light: #F4F6FA;
-            --bg-white: #FFFFFF;
-            --text-main: #0F1B2D;
-            --text-muted: #5A6B85;
-            --azul-unes: #0A2A5C;
-            --dorado-unes: #C9A227;
-            --azul-claro: #1E4D8C;
-            --borde-suave: #E1E8F0;
-            --sombra-suave: 0 2px 12px rgba(10, 42, 92, 0.08);
-            --sombra-media: 0 8px 28px rgba(10, 42, 92, 0.14);
-            --radius-sm: 8px;
-            --radius-md: 14px;
-            --radius-lg: 20px;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Inter', system-ui, sans-serif;
-            background-color: var(--bg-light);
-            color: var(--text-main);
-            min-height: 100vh;
-            overflow-x: hidden;
-            position: relative;
-            line-height: 1.5;
-        }
-
-        /* ============================================
-           FONDO DECORATIVO
-           ============================================ */
-        .bg-glow {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(120px);
-            opacity: 0.35;
-            pointer-events: none;
-            z-index: 0;
-        }
-        .bg-glow-1 {
-            width: 500px;
-            height: 500px;
-            background: var(--azul-unes);
-            top: -200px;
-            left: -200px;
-        }
-        .bg-glow-2 {
-            width: 400px;
-            height: 400px;
-            background: var(--dorado-unes);
-            bottom: -180px;
-            right: -150px;
-            opacity: 0.18;
-        }
-
-        /* ============================================
-           CONTENEDOR PRINCIPAL
-           ============================================ */
-        .app-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 24px 28px 40px;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* ============================================
-           HEADER
-           ============================================ */
-        .main-header {
-            background: var(--bg-white);
-            border-radius: var(--radius-lg);
-            box-shadow: var(--sombra-suave);
-            padding: 20px 28px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 24px;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-        }
-
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .logo-shield {
-            width: 56px;
-            height: 56px;
-            background: var(--azul-unes);
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            flex-shrink: 0;
-            box-shadow: 0 4px 12px rgba(10, 42, 92, 0.25);
-        }
-
-        .logo-unes-img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            padding: 6px;
-            background: #fff;
-        }
-
-        .logo-text h1 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.6rem;
-            font-weight: 800;
-            color: var(--azul-unes);
-            letter-spacing: -0.02em;
-        }
-
-        .logo-text p {
-            font-size: 0.82rem;
-            color: var(--text-muted);
-            font-weight: 500;
-            margin-top: 2px;
-        }
-
-        .search-filter-bar {
-            flex: 1;
-            max-width: 480px;
-            min-width: 260px;
-        }
-
-        .search-box {
-            position: relative;
-            display: flex;
-            align-items: center;
-            background: var(--bg-light);
-            border: 1.5px solid var(--borde-suave);
-            border-radius: 999px;
-            padding: 4px 6px 4px 16px;
-            transition: all 0.2s ease;
-        }
-
-        .search-box:focus-within {
-            border-color: var(--azul-claro);
-            background: #fff;
-            box-shadow: 0 0 0 4px rgba(30, 77, 140, 0.08);
-        }
-
-        .search-icon {
-            color: var(--text-muted);
-            font-size: 20px;
-        }
-
-        #search-input {
-            flex: 1;
-            border: none;
-            background: transparent;
-            outline: none;
-            padding: 10px 8px;
-            font-size: 0.9rem;
-            font-family: inherit;
-            color: var(--text-main);
-        }
-
-        #search-input::placeholder {
-            color: #98A5B8;
-        }
-
-        .clear-btn {
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            color: var(--text-muted);
-            display: flex;
-            align-items: center;
-            padding: 6px;
-            border-radius: 50%;
-            transition: background 0.2s;
-        }
-
-        .clear-btn:hover {
-            background: rgba(0, 0, 0, 0.05);
-        }
-
-        /* ============================================
-           BANNER DE BIENVENIDA
-           ============================================ */
-        .welcome-banner {
-            background: linear-gradient(135deg, var(--azul-unes) 0%, var(--azul-claro) 100%);
-            color: #fff;
-            border-radius: var(--radius-lg);
-            padding: 22px 28px;
-            display: flex;
-            align-items: center;
-            gap: 18px;
-            margin-bottom: 22px;
-            box-shadow: var(--sombra-media);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .welcome-banner::after {
-            content: '';
-            position: absolute;
-            right: -40px;
-            top: -40px;
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            background: rgba(201, 162, 39, 0.18);
-        }
-
-        .banner-icon {
-            width: 52px;
-            height: 52px;
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            backdrop-filter: blur(6px);
-        }
-
-        .banner-icon .material-symbols-outlined {
-            font-size: 28px;
-            color: var(--dorado-unes);
-        }
-
-        .banner-content h2 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-
-        .banner-content p {
-            font-size: 0.88rem;
-            opacity: 0.9;
-            line-height: 1.4;
-        }
-
-        /* ============================================
-           LAYOUT PRINCIPAL
-           ============================================ */
-        .main-layout {
-            display: grid;
-            grid-template-columns: 300px 1fr;
-            gap: 22px;
-            align-items: start;
-        }
-
-        /* ============================================
-           SIDEBAR CAPÍTULOS
-           ============================================ */
-        .sidebar-chapters {
-            background: var(--bg-white);
-            border-radius: var(--radius-lg);
-            box-shadow: var(--sombra-suave);
-            padding: 18px;
-            position: sticky;
-            top: 20px;
-            max-height: calc(100vh - 40px);
-            overflow-y: auto;
-        }
-
-        .sidebar-header h3 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.95rem;
-            color: var(--azul-unes);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding-bottom: 12px;
-            border-bottom: 1.5px solid var(--borde-suave);
-            margin-bottom: 12px;
-        }
-
-        .sidebar-header h3 .material-symbols-outlined {
-            font-size: 20px;
-            color: var(--dorado-unes);
-        }
-
-        .chapters-nav {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
-        .chapter-btn {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background: transparent;
-            border: none;
-            border-radius: var(--radius-sm);
-            padding: 10px 12px;
-            font-family: inherit;
-            font-size: 0.82rem;
-            color: var(--text-main);
-            text-align: left;
-            cursor: pointer;
-            transition: all 0.18s ease;
-            line-height: 1.3;
-            font-weight: 500;
-        }
-
-        .chapter-btn:hover {
-            background: var(--bg-light);
-        }
-
-        .chapter-btn.active {
-            background: var(--azul-unes);
-            color: #fff;
-            box-shadow: 0 4px 10px rgba(10, 42, 92, 0.22);
-        }
-
-        .cap-badge {
-            font-size: 0.7rem;
-            font-weight: 700;
-            background: rgba(201, 162, 39, 0.18);
-            color: var(--dorado-unes);
-            padding: 3px 8px;
-            border-radius: 6px;
-            white-space: nowrap;
-            flex-shrink: 0;
-            letter-spacing: 0.02em;
-        }
-
-        .chapter-btn.active .cap-badge {
-            background: var(--dorado-unes);
-            color: var(--azul-unes);
-        }
-
-        /* ============================================
-           CONTENIDO PRINCIPAL
-           ============================================ */
-        .main-content {
-            min-width: 0;
-        }
-
-        .section-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 16px;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .section-header h2 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--azul-unes);
-        }
-
-        .badge {
-            background: var(--azul-unes);
-            color: #fff;
-            font-size: 0.75rem;
-            font-weight: 600;
-            padding: 5px 12px;
-            border-radius: 999px;
-        }
-
-        /* ============================================
-           GRID DE ARTÍCULOS
-           ============================================ */
-        .articles-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 16px;
-        }
-
-        .article-card {
-            background: var(--bg-white);
-            border-radius: var(--radius-md);
-            padding: 18px;
-            box-shadow: var(--sombra-suave);
-            cursor: pointer;
-            transition: all 0.2s ease;
-            border-left: 4px solid var(--dorado-unes);
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .article-card:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--sombra-media);
-            border-left-color: var(--azul-unes);
-        }
-
-        .article-card-tag {
-            font-size: 0.68rem;
-            font-weight: 700;
-            color: var(--dorado-unes);
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-        }
-
-        .article-card h3 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--azul-unes);
-        }
-
-        .article-card p {
-            font-size: 0.82rem;
-            color: var(--text-muted);
-            line-height: 1.5;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        .article-card-footer {
-            margin-top: auto;
-            padding-top: 8px;
-            font-size: 0.72rem;
-            color: var(--azul-claro);
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .article-card-footer .material-symbols-outlined {
-            font-size: 14px;
-        }
-
-        /* ============================================
-           ESTADO DE CARGA / VACÍO
-           ============================================ */
-        .loading-state, .empty-state {
-            grid-column: 1 / -1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 60px 20px;
-            color: var(--text-muted);
-            text-align: center;
-        }
-
-        .spinner {
-            width: 42px;
-            height: 42px;
-            border: 4px solid var(--borde-suave);
-            border-top-color: var(--azul-unes);
-            border-radius: 50%;
-            animation: spin 0.9s linear infinite;
-            margin-bottom: 14px;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        /* ============================================
-           MODAL
-           ============================================ */
-        .modal-backdrop {
-            position: fixed;
-            inset: 0;
-            background: rgba(10, 20, 40, 0.55);
-            backdrop-filter: blur(4px);
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            animation: fadeIn 0.2s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .modal-card {
-            background: #fff;
-            border-radius: var(--radius-lg);
-            max-width: 640px;
-            width: 100%;
-            max-height: 85vh;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            animation: slideUp 0.25s ease;
-        }
-
-        @keyframes slideUp {
-            from { transform: translateY(20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            padding: 20px 24px 14px;
-            border-bottom: 1.5px solid var(--borde-suave);
-        }
-
-        .modal-category-tag {
-            font-size: 0.7rem;
-            font-weight: 700;
-            color: var(--dorado-unes);
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-        }
-
-        .modal-title-area h3 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.3rem;
-            color: var(--azul-unes);
-            margin-top: 4px;
-        }
-
-        .modal-close-btn {
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            color: var(--text-muted);
-            padding: 6px;
-            border-radius: 50%;
-            transition: background 0.2s;
-        }
-
-        .modal-close-btn:hover {
-            background: var(--bg-light);
-        }
-
-        .modal-body {
-            padding: 20px 24px;
-            overflow-y: auto;
-            flex: 1;
-        }
-
-        .modal-content-text {
-            font-size: 0.92rem;
-            line-height: 1.7;
-            color: var(--text-main);
-            white-space: pre-wrap;
-        }
-
-        .modal-keywords-box {
-            margin-top: 20px;
-            padding-top: 16px;
-            border-top: 1.5px dashed var(--borde-suave);
-            font-size: 0.82rem;
-        }
-
-        .modal-keywords-box strong {
-            color: var(--azul-unes);
-        }
-
-        .keyword-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-top: 8px;
-        }
-
-        .keyword-tags span {
-            background: var(--bg-light);
-            color: var(--azul-claro);
-            font-size: 0.72rem;
-            padding: 4px 10px;
-            border-radius: 999px;
-            font-weight: 500;
-        }
-
-        .modal-footer {
-            padding: 14px 24px 20px;
-            border-top: 1.5px solid var(--borde-suave);
-            display: flex;
-            justify-content: flex-end;
-        }
-
-        .btn-primary {
-            background: var(--azul-unes);
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 999px;
-            font-family: inherit;
-            font-weight: 600;
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .btn-primary:hover {
-            background: var(--azul-claro);
-            transform: translateY(-1px);
-        }
-
-        /* ============================================
-           CHATBOT FLOTANTE
-           ============================================ */
-        .assistant-container {
-            position: fixed;
-            bottom: 24px;
-            right: 24px;
-            z-index: 900;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 12px;
-        }
-
-        .avatar-bubble {
-            background: #fff;
-            border-radius: 16px;
-            padding: 12px 16px;
-            max-width: 260px;
-            box-shadow: var(--sombra-media);
-            position: relative;
-            animation: floatIn 0.5s ease;
-            font-size: 0.82rem;
-            line-height: 1.4;
-            color: var(--text-main);
-        }
-
-        @keyframes floatIn {
-            from { transform: translateY(10px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        .bubble-arrow {
-            position: absolute;
-            bottom: -8px;
-            right: 24px;
-            width: 0;
-            height: 0;
-            border-left: 8px solid transparent;
-            border-right: 8px solid transparent;
-            border-top: 8px solid #fff;
-        }
-
-        .avatar-trigger-btn {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
-            background: #fff;
-            border: none;
-            cursor: pointer;
-            box-shadow: var(--sombra-media);
-            padding: 0;
-            position: relative;
-            transition: transform 0.2s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .avatar-trigger-btn:hover {
-            transform: scale(1.06);
-        }
-
-        .unesito-svg {
-            width: 100%;
-            height: 100%;
-        }
-
-        .notification-badge {
-            position: absolute;
-            top: -2px;
-            right: -2px;
-            background: #E53935;
-            color: #fff;
-            font-size: 0.7rem;
-            font-weight: 700;
-            width: 22px;
-            height: 22px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid #fff;
-        }
-
-        .notification-badge.hidden {
-            display: none;
-        }
-
-        /* ============================================
-           CHAT WIDGET
-           ============================================ */
-        .chat-widget {
-            position: fixed;
-            bottom: 24px;
-            right: 24px;
-            width: 380px;
-            max-width: calc(100vw - 32px);
-            height: 560px;
-            max-height: calc(100vh - 48px);
-            background: #fff;
-            border-radius: var(--radius-lg);
-            box-shadow: 0 20px 60px rgba(10, 42, 92, 0.28);
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            z-index: 1001;
-            animation: slideUp 0.28s ease;
-        }
-
-        .chat-header {
-            background: linear-gradient(135deg, var(--azul-unes) 0%, var(--azul-claro) 100%);
-            color: #fff;
-            padding: 14px 16px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .chat-avatar-mini {
-            width: 40px;
-            height: 40px;
-            flex-shrink: 0;
-        }
-
-        .chat-title-info {
-            flex: 1;
-        }
-
-        .chat-title-info h4 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 700;
-        }
-
-        .online-indicator {
-            font-size: 0.72rem;
-            opacity: 0.9;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            margin-top: 2px;
-        }
-
-        .online-indicator .dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: #4ADE80;
-            box-shadow: 0 0 6px #4ADE80;
-        }
-
-        .chat-close-btn {
-            background: rgba(255, 255, 255, 0.15);
-            border: none;
-            border-radius: 50%;
-            width: 32px;
-            height: 32px;
-            cursor: pointer;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.2s;
-        }
-
-        .chat-close-btn:hover {
-            background: rgba(255, 255, 255, 0.28);
-        }
-
-        .chat-messages-container {
-            flex: 1;
-            overflow-y: auto;
-            padding: 16px;
-            background: var(--bg-light);
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .message {
-            display: flex;
-            flex-direction: column;
-            max-width: 85%;
-        }
-
-        .message.assistant {
-            align-self: flex-start;
-        }
-
-        .message.user {
-            align-self: flex-end;
-            align-items: flex-end;
-        }
-
-        .message-bubble {
-            padding: 10px 14px;
-            border-radius: 16px;
-            font-size: 0.85rem;
-            line-height: 1.5;
-        }
-
-        .message.assistant .message-bubble {
-            background: #fff;
-            color: var(--text-main);
-            border-bottom-left-radius: 4px;
-            box-shadow: var(--sombra-suave);
-        }
-
-        .message.user .message-bubble {
-            background: var(--azul-unes);
-            color: #fff;
-            border-bottom-right-radius: 4px;
-        }
-
-        .message-time {
-            font-size: 0.68rem;
-            color: var(--text-muted);
-            margin-top: 4px;
-            padding: 0 4px;
-        }
-
-        .chat-suggestions {
-            margin-top: 4px;
-        }
-
-        .suggestion-title {
-            font-size: 0.72rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-        }
-
-        .suggestions-list {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
-        .suggest-btn {
-            background: #fff;
-            border: 1.5px solid var(--borde-suave);
-            border-radius: 999px;
-            padding: 8px 14px;
-            font-family: inherit;
-            font-size: 0.8rem;
-            color: var(--azul-unes);
-            font-weight: 500;
-            text-align: left;
-            cursor: pointer;
-            transition: all 0.18s;
-        }
-
-        .suggest-btn:hover {
-            background: var(--azul-unes);
-            color: #fff;
-            border-color: var(--azul-unes);
-        }
-
-        .typing-indicator {
-            padding: 8px 16px;
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            background: var(--bg-light);
-        }
-
-        .typing-indicator .dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: var(--text-muted);
-            animation: bounce 1.2s infinite;
-        }
-
-        .typing-indicator .dot:nth-child(2) { animation-delay: 0.2s; }
-        .typing-indicator .dot:nth-child(3) { animation-delay: 0.4s; }
-        .typing-indicator span:last-child { margin-left: 6px; }
-
-        @keyframes bounce {
-            0%, 60%, 100% { transform: translateY(0); }
-            30% { transform: translateY(-5px); }
-        }
-
-        .chat-input-area {
-            display: flex;
-            gap: 8px;
-            padding: 12px 14px;
-            background: #fff;
-            border-top: 1.5px solid var(--borde-suave);
-        }
-
-        #chat-input {
-            flex: 1;
-            border: 1.5px solid var(--borde-suave);
-            border-radius: 999px;
-            padding: 10px 16px;
-            font-family: inherit;
-            font-size: 0.85rem;
-            outline: none;
-            transition: border 0.2s;
-        }
-
-        #chat-input:focus {
-            border-color: var(--azul-claro);
-        }
-
-        .send-btn {
-            background: var(--azul-unes);
-            color: #fff;
-            border: none;
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.2s;
-            flex-shrink: 0;
-        }
-
-        .send-btn:hover {
-            background: var(--azul-claro);
-        }
-
-        /* ============================================
-           FOOTER
-           ============================================ */
-        .main-footer {
-            margin-top: 40px;
-            padding: 24px 20px;
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.82rem;
-            line-height: 1.8;
-            border-top: 1.5px solid var(--borde-suave);
-        }
-
-        .footer-credit strong {
-            color: var(--azul-unes);
-        }
-
-        .footer-links a {
-            color: var(--azul-claro);
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .footer-links a:hover {
-            text-decoration: underline;
-        }
-
-        .footer-links .separator {
-            margin: 0 8px;
-            color: var(--borde-suave);
-        }
-
-        /* ============================================
-           RESPONSIVE
-           ============================================ */
-        @media (max-width: 900px) {
-            .main-layout {
-                grid-template-columns: 1fr;
-            }
-            .sidebar-chapters {
-                position: static;
-                max-height: none;
-            }
-            .chapters-nav {
-                flex-direction: row;
-                flex-wrap: wrap;
-            }
-            .chapter-btn {
-                flex: 1 0 auto;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .app-container {
-                padding: 16px 14px 30px;
-            }
-            .main-header {
-                padding: 16px;
-            }
-            .logo-text h1 {
-                font-size: 1.3rem;
-            }
-            .chat-widget {
-                width: calc(100vw - 20px);
-                height: calc(100vh - 40px);
-                bottom: 10px;
-                right: 10px;
-            }
-            .avatar-bubble {
-                max-width: 200px;
-                font-size: 0.75rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <!-- Fondo decorativo -->
     <div class="bg-glow bg-glow-1"></div>
     <div class="bg-glow bg-glow-2"></div>
 
     <div class="app-container">
-
-        <!-- ==========================================
-             ENCABEZADO
-             ========================================== -->
         <header class="main-header">
             <div class="logo-area">
                 <div class="logo-shield">
-                    <img src="unes.png" alt="Logo UNES" class="logo-unes-img"
-                         onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=&quot;color:#fff;font-weight:800;font-family:Outfit,sans-serif;font-size:1.3rem;&quot;>U</span>';">
+                    <img src="unes.png" alt="Logo UNES" class="logo-unes-img">
                 </div>
                 <div class="logo-text">
                     <h1>Unesito</h1>
@@ -1062,9 +38,6 @@
             </div>
         </header>
 
-        <!-- ==========================================
-             BANNER DE BIENVENIDA
-             ========================================== -->
         <div class="welcome-banner">
             <div class="banner-icon">
                 <span class="material-symbols-outlined">verified</span>
@@ -1075,18 +48,10 @@
             </div>
         </div>
 
-        <!-- ==========================================
-             LAYOUT PRINCIPAL
-             ========================================== -->
         <div class="main-layout">
-
-            <!-- SIDEBAR CAPÍTULOS -->
             <aside class="sidebar-chapters">
                 <div class="sidebar-header">
-                    <h3>
-                        <span class="material-symbols-outlined">menu_book</span>
-                        Capítulos del Reglamento
-                    </h3>
+                    <h3><span class="material-symbols-outlined">menu_book</span> Capítulos del Reglamento</h3>
                 </div>
                 <nav class="chapters-nav" id="chapters-nav">
                     <button class="chapter-btn active" data-cap="all">
@@ -1128,7 +93,6 @@
                 </nav>
             </aside>
 
-            <!-- CONTENIDO PRINCIPAL -->
             <main class="main-content">
                 <div class="section-header">
                     <h2 id="current-section-title">Artículos de las Normas de Convivencia</h2>
@@ -1144,9 +108,6 @@
             </main>
         </div>
 
-        <!-- ==========================================
-             FOOTER
-             ========================================== -->
         <footer class="main-footer">
             <p>© 2026 Universidad Nacional Experimental de la Seguridad (UNES). Todos los derechos reservados.</p>
             <p class="footer-credit">Elaborado por el <strong>Vicerrectorado de Desarrollo Académico</strong></p>
@@ -1158,9 +119,6 @@
         </footer>
     </div>
 
-    <!-- ==========================================
-         MODAL ARTÍCULO
-         ========================================== -->
     <div class="modal-backdrop" id="article-modal" style="display: none;">
         <div class="modal-card">
             <div class="modal-header">
@@ -1185,9 +143,6 @@
         </div>
     </div>
 
-    <!-- ==========================================
-         CHATBOT FLOTANTE
-         ========================================== -->
     <div class="assistant-container" id="assistant-container">
         <div class="avatar-bubble" id="avatar-bubble">
             <div class="bubble-text">¡Hola! Soy <strong>Unesito</strong>. Pregúntame sobre cualquier norma de convivencia de la UNES. 👮‍♂️👋</div>
@@ -1269,7 +224,9 @@
             </div>
 
             <div class="typing-indicator" id="typing-indicator" style="display: none;">
-                <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
                 <span>Unesito está consultando el Acuerdo N°0000692...</span>
             </div>
 
@@ -1282,376 +239,577 @@
         </div>
     </div>
 
-    <!-- ============================================
-         SCRIPT ÚNICO (sin dependencias externas)
-         ============================================ -->
+    <audio id="notif-sound" src="https://assets.mixkit.co/active_storage/sfx/2357/2357-84.wav" preload="auto"></audio>
+
+    <!-- ============================================================
+         DATOS INCRUSTADOS - Normas de Convivencia UNES
+         Acuerdo N°0000692 - 47 artículos
+         ============================================================ -->
     <script>
-    (function () {
-        'use strict';
-
-        // ========================================================
-        // ⚠️ DATOS DE EJEMPLO — REEMPLAZA CON TUS ARTÍCULOS REALES
-        // Formato: { id, capitulo, titulo, contenido, keywords }
-        // ========================================================
-        const ARTICULOS = [
-            {
-                id: 1,
-                capitulo: 'Capítulo I',
-                titulo: 'Artículo 1',
-                contenido: 'El presente Acuerdo tiene por objeto regular las normas de convivencia y el régimen disciplinario aplicable a los estudiantes de la Universidad Nacional Experimental de la Seguridad (UNES), con el fin de garantizar una sana convivencia y el respeto de los derechos y deberes de la comunidad universitaria.',
-                keywords: ['objeto', 'convivencia', 'disciplina', 'UNES']
-            },
-            {
-                id: 2,
-                capitulo: 'Capítulo I',
-                titulo: 'Artículo 2',
-                contenido: 'El ámbito de aplicación de este Acuerdo comprende a todos los estudiantes activos, regulares y en formación de la UNES, en todos sus núcleos y extensiones a nivel nacional.',
-                keywords: ['ámbito', 'aplicación', 'estudiantes', 'núcleos']
-            },
-            {
-                id: 3,
-                capitulo: 'Capítulo I',
-                titulo: 'Artículo 3',
-                contenido: 'Son principios rectores de las normas de convivencia: la dignidad humana, la solidaridad, la igualdad, la no discriminación, el respeto mutuo, la responsabilidad, la disciplina consciente y el bien común.',
-                keywords: ['principios', 'dignidad', 'solidaridad', 'igualdad']
-            },
-            {
-                id: 4,
-                capitulo: 'Capítulo I',
-                titulo: 'Artículo 4',
-                contenido: 'La interpretación de las presentes normas se hará siempre en favor de la formación integral del estudiante y de la protección de los derechos humanos.',
-                keywords: ['interpretación', 'formación', 'derechos humanos']
-            },
-            {
-                id: 12,
-                capitulo: 'Capítulo III',
-                titulo: 'Artículo 12',
-                contenido: 'La permanencia del estudiante en la UNES está condicionada al cumplimiento de los requisitos académicos, disciplinarios y de convivencia establecidos en el presente Acuerdo y demás normativas vigentes.',
-                keywords: ['permanencia', 'requisitos', 'académico']
-            },
-            {
-                id: 13,
-                capitulo: 'Capítulo III',
-                titulo: 'Artículo 13',
-                contenido: 'Son derechos de los estudiantes: recibir una formación integral de calidad; ser tratados con respeto y dignidad; participar en la vida universitaria; presentar solicitudes y recursos; y asociarse libremente conforme a la ley.',
-                keywords: ['derechos', 'formación', 'respeto', 'participación']
-            },
-            {
-                id: 14,
-                capitulo: 'Capítulo III',
-                titulo: 'Artículo 14',
-                contenido: 'Son deberes de los estudiantes: cumplir las normas de convivencia; asistir puntualmente a las actividades académicas; cuidar los bienes de la institución; y mantener un comportamiento acorde con los valores de la UNES.',
-                keywords: ['deberes', 'puntualidad', 'bienes', 'valores']
-            },
-            {
-                id: 59,
-                capitulo: 'Capítulo VII',
-                titulo: 'Artículo 59',
-                contenido: 'El uso del uniforme es obligatorio para todos los estudiantes durante las actividades académicas, actos oficiales y prácticas profesionales. El uniforme deberá portarse completo, limpio y en buen estado.',
-                keywords: ['uniforme', 'obligatorio', 'presentación']
-            },
-            {
-                id: 60,
-                capitulo: 'Capítulo VII',
-                titulo: 'Artículo 60',
-                contenido: 'Queda prohibido el uso de accesorios no autorizados, celulares u otros dispositivos electrónicos durante las actividades que requieran atención plena, salvo autorización expresa del docente o autoridad competente.',
-                keywords: ['celular', 'accesorios', 'prohibición']
-            },
-            {
-                id: 78,
-                capitulo: 'Capítulo IX',
-                titulo: 'Artículo 78',
-                contenido: 'Se considera falta leve toda conducta que contravenga las normas de convivencia sin causar daño grave a personas o bienes, como la impuntualidad reiterada, el uso indebido del uniforme o la falta de respeto leve a compañeros.',
-                keywords: ['falta leve', 'impuntualidad', 'uniforme']
-            },
-            {
-                id: 79,
-                capitulo: 'Capítulo IX',
-                titulo: 'Artículo 79',
-                contenido: 'Se considera falta grave toda conducta que atente contra la integridad física o moral de miembros de la comunidad universitaria, el patrimonio institucional o el normal desarrollo de las actividades académicas.',
-                keywords: ['falta grave', 'integridad', 'patrimonio']
-            },
-            {
-                id: 80,
-                capitulo: 'Capítulo IX',
-                titulo: 'Artículo 80',
-                contenido: 'Se considera falta muy grave toda conducta tipificada como delito por la legislación venezolana, el uso de sustancias prohibidas, el porte de armas o la violencia extrema dentro del recinto universitario.',
-                keywords: ['falta muy grave', 'delito', 'armas', 'violencia']
-            }
-        ];
-
-        // ========================================================
-        // ESTADO
-        // ========================================================
-        const state = {
-            articulos: [...ARTICULOS],
-            filtroCapitulo: 'all',
-            busqueda: '',
-            articuloActual: null
-        };
-
-        // ========================================================
-        // REFERENCIAS DOM
-        // ========================================================
-        const $ = (sel) => document.querySelector(sel);
-        const $$ = (sel) => document.querySelectorAll(sel);
-
-        const grid = $('#articles-grid');
-        const countBadge = $('#articles-count');
-        const sectionTitle = $('#current-section-title');
-        const searchInput = $('#search-input');
-        const clearSearch = $('#clear-search');
-        const chaptersNav = $('#chapters-nav');
-
-        const modal = $('#article-modal');
-        const modalTitle = $('#modal-title');
-        const modalCategory = $('#modal-category');
-        const modalContent = $('#modal-content');
-        const modalKeywords = $('#modal-keywords');
-
-        const avatarTrigger = $('#avatar-trigger');
-        const chatWidget = $('#chat-widget');
-        const closeChat = $('#close-chat');
-        const chatMessages = $('#chat-messages');
-        const chatForm = $('#chat-form');
-        const chatInput = $('#chat-input');
-        const typingIndicator = $('#typing-indicator');
-        const chatSuggestions = $('#chat-suggestions');
-        const notifBadge = $('#notif-badge');
-        const avatarBubble = $('#avatar-bubble');
-
-        // ========================================================
-        // RENDERIZADO DE ARTÍCULOS
-        // ========================================================
-        function renderArticles() {
-            const term = state.busqueda.trim().toLowerCase();
-            const cap = state.filtroCapitulo;
-
-            const filtrados = state.articulos.filter((a) => {
-                const coincideCap =
-                    cap === 'all' ||
-                    a.capitulo.toLowerCase().includes('capítulo ' + cap) ||
-                    a.capitulo.toLowerCase().includes('capítulo ' + numeroRomano(cap));
-
-                const coincideTexto =
-                    !term ||
-                    a.titulo.toLowerCase().includes(term) ||
-                    a.contenido.toLowerCase().includes(term) ||
-                    a.keywords.some((k) => k.toLowerCase().includes(term));
-
-                return coincideCap && coincideTexto;
-            });
-
-            countBadge.textContent = `${filtrados.length} artículo${filtrados.length !== 1 ? 's' : ''}`;
-
-            if (filtrados.length === 0) {
-                grid.innerHTML = `
-                    <div class="empty-state">
-                        <span class="material-symbols-outlined" style="font-size:48px;color:#C9A227;margin-bottom:10px;">search_off</span>
-                        <p>No se encontraron artículos que coincidan con tu búsqueda.</p>
-                    </div>`;
-                return;
-            }
-
-            grid.innerHTML = filtrados.map((a) => `
-                <article class="article-card" data-id="${a.id}">
-                    <span class="article-card-tag">${a.capitulo}</span>
-                    <h3>${a.titulo}</h3>
-                    <p>${a.contenido}</p>
-                    <div class="article-card-footer">
-                        <span class="material-symbols-outlined">visibility</span>
-                        Ver artículo completo
-                    </div>
-                </article>
-            `).join('');
-
-            // Event listener para abrir modal
-            $$('.article-card').forEach((card) => {
-                card.addEventListener('click', () => {
-                    const id = Number(card.dataset.id);
-                    const art = state.articulos.find((a) => a.id === id);
-                    if (art) abrirModal(art);
-                });
-            });
-        }
-
-        function numeroRomano(n) {
-            const map = {1:'I',2:'II',3:'III',4:'IV',5:'V',6:'VI',7:'VII',8:'VIII',9:'IX',10:'X',11:'XI'};
-            return map[n] || n;
-        }
-
-        // ========================================================
-        // MODAL
-        // ========================================================
-        function abrirModal(art) {
-            state.articuloActual = art;
-            modalCategory.textContent = art.capitulo;
-            modalTitle.textContent = art.titulo;
-            modalContent.textContent = art.contenido;
-            modalKeywords.innerHTML = art.keywords.map((k) => `<span>${k}</span>`).join('');
-            modal.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function cerrarModal() {
-            modal.style.display = 'none';
-            document.body.style.overflow = '';
-            state.articuloActual = null;
-        }
-
-        $('#close-modal').addEventListener('click', cerrarModal);
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) cerrarModal();
-        });
-
-        $('#modal-ask-btn').addEventListener('click', () => {
-            if (state.articuloActual) {
-                cerrarModal();
-                abrirChat();
-                setTimeout(() => {
-                    preguntar(`Cuéntame sobre el ${state.articuloActual.titulo}`);
-                }, 300);
-            }
-        });
-
-        // ========================================================
-        // BÚSQUEDA
-        // ========================================================
-        searchInput.addEventListener('input', (e) => {
-            state.busqueda = e.target.value;
-            clearSearch.style.display = e.target.value ? 'flex' : 'none';
-            renderArticles();
-        });
-
-        clearSearch.addEventListener('click', () => {
-            searchInput.value = '';
-            state.busqueda = '';
-            clearSearch.style.display = 'none';
-            renderArticles();
-            searchInput.focus();
-        });
-
-        // ========================================================
-        // FILTRO POR CAPÍTULO
-        // ========================================================
-        chaptersNav.addEventListener('click', (e) => {
-            const btn = e.target.closest('.chapter-btn');
-            if (!btn) return;
-            $$('.chapter-btn').forEach((b) => b.classList.remove('active'));
-            btn.classList.add('active');
-            state.filtroCapitulo = btn.dataset.cap;
-            sectionTitle.textContent = btn.dataset.cap === 'all'
-                ? 'Artículos de las Normas de Convivencia'
-                : btn.textContent.trim().replace(/^Cap\s+\w+\s*/, '');
-            renderArticles();
-        });
-
-        // ========================================================
-        // CHATBOT
-        // ========================================================
-        function abrirChat() {
-            chatWidget.style.display = 'flex';
-            avatarTrigger.style.display = 'none';
-            avatarBubble.style.display = 'none';
-            notifBadge.classList.add('hidden');
-            setTimeout(() => chatInput.focus(), 100);
-        }
-
-        function cerrarChat() {
-            chatWidget.style.display = 'none';
-            avatarTrigger.style.display = 'flex';
-            avatarBubble.style.display = 'block';
-        }
-
-        avatarTrigger.addEventListener('click', abrirChat);
-        closeChat.addEventListener('click', cerrarChat);
-
-        // Sugerencias
-        chatSuggestions.addEventListener('click', (e) => {
-            const btn = e.target.closest('.suggest-btn');
-            if (!btn) return;
-            preguntar(btn.dataset.query);
-        });
-
-        // Envío de mensajes
-        chatForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const texto = chatInput.value.trim();
-            if (!texto) return;
-            preguntar(texto);
-            chatInput.value = '';
-        });
-
-        function preguntar(texto) {
-            agregarMensaje('user', texto);
-            typingIndicator.style.display = 'flex';
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-
-            setTimeout(() => {
-                typingIndicator.style.display = 'none';
-                const respuesta = buscarRespuesta(texto);
-                agregarMensaje('assistant', respuesta);
-            }, 800 + Math.random() * 600);
-        }
-
-        function agregarMensaje(rol, texto) {
-            const div = document.createElement('div');
-            div.className = `message ${rol}`;
-            const hora = new Date().toLocaleTimeString('es-VE', { hour: '2-digit', minute: '2-digit' });
-            div.innerHTML = `
-                <div class="message-bubble">${texto}</div>
-                <span class="message-time">${hora}</span>
-            `;
-            chatMessages.appendChild(div);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }
-
-        function buscarRespuesta(texto) {
-            const t = texto.toLowerCase();
-
-            // Buscar por número de artículo: "artículo 90"
-            const matchArt = t.match(/art[íi]culo\s+(\d+)/);
-            if (matchArt) {
-                const num = Number(matchArt[1]);
-                const art = state.articulos.find((a) => a.id === num);
-                if (art) {
-                    return `<strong>${art.titulo}</strong> (${art.capitulo}):<br><br>${art.contenido}`;
-                }
-                return `No encontré el artículo ${num} en la base actual. Verifica el número o consulta el reglamento completo.`;
-            }
-
-            // Búsqueda por palabras clave
-            const resultados = state.articulos.filter((a) =>
-                a.contenido.toLowerCase().includes(t) ||
-                a.titulo.toLowerCase().includes(t) ||
-                a.keywords.some((k) => k.toLowerCase().includes(t) || t.includes(k.toLowerCase()))
-            );
-
-            if (resultados.length > 0) {
-                const r = resultados[0];
-                return `Según el <strong>${r.titulo}</strong> (${r.capitulo}):<br><br>${r.contenido}`;
-            }
-
-            return `No encontré información específica sobre "<em>${texto}</em>" en el Acuerdo N°0000692. Te recomiendo consultar directamente el reglamento o escribir a <a href="mailto:asesoriaestudianteunes@gmail.com">asesoriaestudianteunes@gmail.com</a>.`;
-        }
-
-        // ========================================================
-        // INIT
-        // ========================================================
-        function init() {
-            // Hora de bienvenida
-            const wt = document.getElementById('welcome-time');
-            if (wt) wt.textContent = new Date().toLocaleTimeString('es-VE', { hour: '2-digit', minute: '2-digit' });
-
-            renderArticles();
-        }
-
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', init);
-        } else {
-            init();
-        }
-    })();
+    const NORMAS_DATA_INLINE = [
+      {
+        "id": 1,
+        "numero": "Artículo 1",
+        "capitulo_num": 1,
+        "capitulo": "Capítulo I: Objeto, Ámbito de Aplicación, Principios y Bases Doctrinarias",
+        "seccion": "OBJETO",
+        "titulo": "Objeto de las Normas de Convivencia",
+        "texto": "Las presentes Normas de Convivencia y Régimen Disciplinario con base a la misión y visión de nuestra Alma Mater de la Seguridad, tienen por objeto establecer el conjunto de disposiciones dirigidas a regular la actitud, conducta y comportamiento de las y los estudiantes, con el propósito de lograr relaciones armónicas, colaborativas y cooperativas fundamentadas en la responsabilidad, el respeto, la tolerancia y la disciplina de la Universidad Nacional Experimental de la Seguridad (UNES) y sus aulas de aprendizaje. Estas Normas de Convivencia y Régimen Disciplinario regirán las acciones u omisiones, aunque sean realizadas por las y los estudiantes en un lugar distinto al recinto universitario.",
+        "palabras_clave": ["objeto", "regula", "conducta", "comportamiento", "relaciones armonicas", "respeto", "tolerancia", "disciplina", "fuera", "dentro", "aulas"]
+      },
+      {
+        "id": 2,
+        "numero": "Artículo 2",
+        "capitulo_num": 1,
+        "capitulo": "Capítulo I: Objeto, Ámbito de Aplicación, Principios y Bases Doctrinarias",
+        "seccion": "ÁMBITO DE APLICACIÓN",
+        "titulo": "Ámbito de Aplicación",
+        "texto": "Las presentes Normas de Convivencia y Régimen Disciplinario son aplicables a las y los estudiantes de la Universidad Nacional Experimental de la Seguridad (UNES) de los diferentes Programas Nacionales de Formación (PNF), desde trayecto inicial hasta el Trayecto IV.",
+        "palabras_clave": ["ambito", "aplicacion", "estudiantes", "discentes", "pnf", "trayecto", "inicial", "obligatorio"]
+      },
+      {
+        "id": 3,
+        "numero": "Artículo 3",
+        "capitulo_num": 1,
+        "capitulo": "Capítulo I: Objeto, Ámbito de Aplicación, Principios y Bases Doctrinarias",
+        "seccion": "PRINCIPIOS DE APLICACIÓN",
+        "titulo": "Principios Rectores",
+        "texto": "Estas Normas de Convivencia y Régimen Disciplinario se regirán bajo los siguientes principios: A. PRINCIPIO DE ACTUACIÓN: Implica la imparcialidad y justicia que pondrá de manifiesto la autoridad disciplinaria al momento de imponer la medida correspondiente, sin discriminación de raza, sexo, género, religión, preferencia política o condición social. B. PRINCIPIO DE INFORMACIÓN: Entendida como el derecho que tienen las y los estudiantes a estar informados por parte de las autoridades sobre las normas, reglas y procedimientos. C. PRINCIPIO DE RESPETO A LOS DERECHOS HUMANOS: Comprende la actuación con estricto apego y respeto a los Derechos Humanos consagrados en la Constitución y Tratados Internacionales. D. PRINCIPIO DE IMPARCIALIDAD: Exige la actuación con absoluta imparcialidad y objetividad. E. PRINCIPIO DEL DEBIDO PROCESO: Disposición consagrada en nuestra Constitución aplicada a las y los estudiantes. F. PRINCIPIO DE CELERIDAD: Garantía de cualquier proceso oportuno, eficaz, transparente, oral y sin dilaciones indebidas. G. PRINCIPIO DE PRESUNCIÓN DE INOCENCIA. H. PRINCIPIO DE LEGALIDAD. I. PRINCIPIO DE VERACIDAD. J. PRINCIPIO DE PROPORCIONALIDAD. K. PRINCIPIO DE LA CONFIANZA LEGÍTIMA.",
+        "palabras_clave": ["principios", "actuacion", "informacion", "derechos humanos", "ddhh", "imparcialidad", "debido proceso", "celeridad", "presuncion", "inocencia", "legalidad", "veracidad", "proporcionalidad"]
+      },
+      {
+        "id": 4,
+        "numero": "Artículo 4",
+        "capitulo_num": 1,
+        "capitulo": "Capítulo I: Objeto, Ámbito de Aplicación, Principios y Bases Doctrinarias",
+        "seccion": "BASES DOCTRINALES",
+        "titulo": "Pilares Fundamentales de la UNES",
+        "texto": "La permanencia de las y los estudiantes dentro de la Universidad Nacional Experimental de la Seguridad se basa en cuatro (04) pilares fundamentales, siendo ellos: A. LA DISCIPLINA: Entendida como el cumplimiento fiel y ordenado de las presentes Normas de Convivencia y Régimen Disciplinario. B. LA OBEDIENCIA: Consiste en el cumplimiento estricto de las órdenes, lineamientos y disposiciones legalmente emanadas por la autoridad competente. C. EL RESPETO: Acatamiento de los principios morales y éticos establecidos por la Universidad. D. LA SUBORDINACIÓN: Consiste en el acatamiento por parte de las y los estudiantes de las órdenes legalmente emanadas de sus autoridades y superiores jerárquicos.",
+        "palabras_clave": ["bases", "doctrinales", "pilares", "disciplina", "obediencia", "respeto", "subordinacion", "ordenes", "superiores"]
+      },
+      {
+        "id": 5,
+        "numero": "Artículo 5",
+        "capitulo_num": 2,
+        "capitulo": "Capítulo II: De las Autoridades",
+        "seccion": "AUTORIDADES DE LA UNIVERSIDAD",
+        "titulo": "Autoridades Universitarias",
+        "texto": "Las Autoridades de la Universidad Nacional Experimental de la Seguridad, son los que se corresponden a: Consejo Universitario, Rectora o Rector, Vicerrectoras o Vicerrectores y Secretaria o Secretario. PARÁGRAFO ÚNICO: Las Direcciones de Gestión Académicas tienen el rol de asesorar, evaluar y participar en los Consejos Disciplinarios.",
+        "palabras_clave": ["autoridades", "rector", "rectora", "vicerrector", "secretario", "consejo universitario"]
+      },
+      {
+        "id": 6,
+        "numero": "Artículo 6",
+        "capitulo_num": 2,
+        "capitulo": "Capítulo II: De las Autoridades",
+        "seccion": "AUTORIDADES DEL CENTRO DE FORMACIÓN",
+        "titulo": "Autoridades del Centro de Formación (CEFO)",
+        "texto": "A los fines del conocimiento de las y los estudiantes, son autoridades del Centro de Formación: 1. La Directora o Director del Centro de Formación. 2. La Coordinadora o el Coordinador de: a. Académico. b. Vinculación Social y Creación Intelectual. c. Administrativo. d. Control de Estudios.",
+        "palabras_clave": ["autoridades", "cefo", "director", "coordinador", "academico", "vinculacion social", "control de estudios"]
+      },
+      {
+        "id": 7,
+        "numero": "Artículo 7",
+        "capitulo_num": 2,
+        "capitulo": "Capítulo II: De las Autoridades",
+        "seccion": "ATRIBUCIONES DE LAS AUTORIDADES",
+        "titulo": "Atribuciones de las Autoridades",
+        "texto": "Son atribuciones de las autoridades de la UNES: 1. Dictar líneas, directrices y garantizar el estricto cumplimiento y aplicabilidad de las presentes normas. 2. Garantizar los mecanismos para fomentar la formación y la disciplina. 3. Reportar oportunamente las faltas de las cuales han sido testigos u observado.",
+        "palabras_clave": ["atribuciones", "directrices", "reportar", "faltas", "supervisar"]
+      },
+      {
+        "id": 8,
+        "numero": "Artículo 8",
+        "capitulo_num": 2,
+        "capitulo": "Capítulo II: De las Autoridades",
+        "seccion": "LÍNEA DE MANDO",
+        "titulo": "Línea de Mando",
+        "texto": "La Línea de Mando es el canal de comunicación mediante el cual el escalón superior de la dependencia transmite sus órdenes, instrucciones e información de importancia a los escalones subordinados, ejerciendo por ese mismo conducto la coordinación, supervisión y el control de su ejecución.",
+        "palabras_clave": ["linea de mando", "canal", "comunicacion", "ordenes", "subordinados"]
+      },
+      {
+        "id": 9,
+        "numero": "Artículo 9",
+        "capitulo_num": 2,
+        "capitulo": "Capítulo II: De las Autoridades",
+        "seccion": "CADENA DE MANDO",
+        "titulo": "Cadena de Mando",
+        "texto": "La cadena de mando es un sistema de información con estructura jerárquica, partiendo desde la base superior hasta el nivel inferior de una organización. Establece la rendición de cuentas y la toma de decisiones.",
+        "palabras_clave": ["cadena de mando", "jerarquia", "toma de decisiones"]
+      },
+      {
+        "id": 10,
+        "numero": "Artículo 10",
+        "capitulo_num": 2,
+        "capitulo": "Capítulo II: De las Autoridades",
+        "seccion": "ÓRGANO REGULAR",
+        "titulo": "El Órgano Regular",
+        "texto": "Es la instancia de comunicación utilizado por las y los estudiantes para transmitir el proceso de cumplimiento de las instrucciones, solicitudes o requisiciones necesarias. Cualquier estudiante que desee dirigirse a una autoridad debe hacerlo utilizando su órgano regular jerárquico por intermedio del Oficial de Planta del aula de aprendizaje.",
+        "palabras_clave": ["organo regular", "oficial de planta", "comunicacion", "solicitud", "jerarquico"]
+      },
+      {
+        "id": 11,
+        "numero": "Artículo 11",
+        "capitulo_num": 2,
+        "capitulo": "Capítulo II: De las Autoridades",
+        "seccion": "ESTRUCTURA DE AULA",
+        "titulo": "Delegado de Aula y Oficial de Planta",
+        "texto": "Cada aula de clase tendrá una o un Delegado de Aula y un Oficial de Planta, quienes serán los responsables de velar por el cumplimiento de las normativas y servirán como primer escalón del órgano regular jerárquico.",
+        "palabras_clave": ["delegado", "oficial de planta", "aula", "responsables"]
+      },
+      {
+        "id": 12,
+        "numero": "Artículo 12",
+        "capitulo_num": 3,
+        "capitulo": "Capítulo III: De las y los Estudiantes, Permanencia, Derechos y Deberes",
+        "seccion": "DE LA PERMANENCIA",
+        "titulo": "Modalidades de Permanencia",
+        "texto": "Las y los estudiantes podrán cumplir modalidades de permanencia a saber: interna y/o semi-interna. La modalidad interna consistirá en actividades que exigen la pernocta en los Centros de Formación. La modalidad semi-interna consistirá en actividades que no requieren pernocta permanente.",
+        "palabras_clave": ["permanencia", "interna", "semi interna", "pernocta", "dormir", "quedarse"]
+      },
+      {
+        "id": 13,
+        "numero": "Artículo 13",
+        "capitulo_num": 3,
+        "capitulo": "Capítulo III: De las y los Estudiantes, Permanencia, Derechos y Deberes",
+        "seccion": "DE LA PERMANENCIA",
+        "titulo": "Espera al Docente",
+        "texto": "Las y los estudiantes deberán esperar al docente en el aula de clase.",
+        "palabras_clave": ["esperar", "docente", "aula", "profesor"]
+      },
+      {
+        "id": 14,
+        "numero": "Artículo 14",
+        "capitulo_num": 3,
+        "capitulo": "Capítulo III: De las y los Estudiantes, Permanencia, Derechos y Deberes",
+        "seccion": "DE LA PERMANENCIA",
+        "titulo": "Postura al Intervenir",
+        "texto": "Las y los estudiantes deberán ponerse de pie al momento de intercambiar o emitir opiniones con las personas que participan en la actividad, e identificarse.",
+        "palabras_clave": ["ponerse de pie", "identificarse", "opinar", "hablar"]
+      },
+      {
+        "id": 15,
+        "numero": "Artículo 15",
+        "capitulo_num": 3,
+        "capitulo": "Capítulo III: De las y los Estudiantes, Permanencia, Derechos y Deberes",
+        "seccion": "DE LA PERMANENCIA",
+        "titulo": "Prohibición de Alimentos en Clase",
+        "texto": "Las y los estudiantes deben abstenerse de consumir bebidas o alimentos dentro de las aulas de clase.",
+        "palabras_clave": ["alimentos", "bebidas", "comer", "beber", "aula", "salón"]
+      },
+      {
+        "id": 16,
+        "numero": "Artículo 16",
+        "capitulo_num": 3,
+        "capitulo": "Capítulo III: De las y los Estudiantes, Permanencia, Derechos y Deberes",
+        "seccion": "DE LA PERMANENCIA",
+        "titulo": "Permanencia Fuera de Aula",
+        "texto": "Las y los estudiantes no podrán permanecer fuera de las aulas de clase y espacios de aprendizaje en horas de clase sin autorización o permiso por parte de la autoridad correspondiente.",
+        "palabras_clave": ["permanecer fuera", "permiso", "autorizacion", "horas de clase"]
+      },
+      {
+        "id": 17,
+        "numero": "Artículo 17",
+        "capitulo_num": 3,
+        "capitulo": "Capítulo III: De las y los Estudiantes, Permanencia, Derechos y Deberes",
+        "seccion": "DE LA PERMANENCIA",
+        "titulo": "Uniforme y Carnet Obligatorios para Ingreso",
+        "texto": "Las y los estudiantes no podrán ingresar a las aulas de clase, espacios o actividades, si no portan el respectivo uniforme y carnet, salvo aquellos casos que cuenten con la debida autorización. Tampoco podrán permanecer en áreas administrativas del CEFO sin acompañamiento.",
+        "palabras_clave": ["ingresar", "uniforme", "carnet", "credencial", "autorizacion", "cefo"]
+      },
+      {
+        "id": 18,
+        "numero": "Artículo 18",
+        "capitulo_num": 3,
+        "capitulo": "Capítulo III: De las y los Estudiantes, Permanencia, Derechos y Deberes",
+        "seccion": "DE LOS DERECHOS",
+        "titulo": "Derechos de las y los Estudiantes",
+        "texto": "Las y los estudiantes de la UNES tienen derecho a: 1. Un trato digno y respetuoso. 2. La igualdad y a no ser víctimas de discriminación. 3. Recibir asistencia médica-odontológica integral, orientación psicológica y jurídica. 4. Educación continua y de calidad. 5. La defensa y al debido proceso. 6. Asistir a actividades académicas. 7. Régimen de permisos especiales para atletas destacados o artistas. 8. Ser informados de las normas. 9. Disponer de tiempo para estudio libre. 14. Una dotación básica de prendas de vestir/implementos de estudio. 15. Recibir certificación y títulos correspondientes.",
+        "palabras_clave": ["derechos", "derecho", "trato digno", "igualdad", "no discriminacion", "asistencia medica", "psicologia", "educacion", "debido proceso", "defensa", "dotacion", "titulos"]
+      },
+      {
+        "id": 19,
+        "numero": "Artículo 19",
+        "capitulo_num": 3,
+        "capitulo": "Capítulo III: De las y los Estudiantes, Permanencia, Derechos y Deberes",
+        "seccion": "DE LOS DEBERES",
+        "titulo": "Deberes de las y los Estudiantes",
+        "texto": "Son deberes de las y los estudiantes: 1. Cumplir de modo diligente las normas. 2. Responder 'ordene' de manera respetuosa ante un superior. 3. Dirigirse solo como ciudadano o ciudadana. 5. Adoptar posición de saludo. 6. Mantener la distancia de cuatro (4) pasos en posición firme para hablar con autoridades. 10. Asistir puntualmente. 15. Portar credencial visible. 28. Prohibido estar tomados de la mano, abrazados, besándose dentro de la universidad. 29. Prohibido el uso de celulares, música o audífonos durante clases sin autorización.",
+        "palabras_clave": ["deberes", "deber", "ordene", "saludo", "distancia", "cuatro pasos", "firme", "puntualidad", "credencial", "abrazados", "besandose", "celulares", "audifonos", "musica"]
+      },
+      {
+        "id": 20,
+        "numero": "Artículo 20",
+        "capitulo_num": 4,
+        "capitulo": "Capítulo IV: Régimen de Asistencias, Permisos y Reposos",
+        "seccion": "DE LA ASISTENCIA",
+        "titulo": "Asistencia Obligatoria",
+        "texto": "La asistencia a clase es obligatoria. Las y los estudiantes que para el momento de pasar lista de asistencia no se encuentren en el aula de clase se considerarán ausentes, y deberán ser reportados de forma inmediata mediante el Órgano Regular.",
+        "palabras_clave": ["asistencia", "obligatoria", "lista", "ausente", "reportado"]
+      },
+      {
+        "id": 21,
+        "numero": "Artículo 21",
+        "capitulo_num": 4,
+        "capitulo": "Capítulo IV: Régimen de Asistencias, Permisos y Reposos",
+        "seccion": "MOMENTOS DE LA ASISTENCIA",
+        "titulo": "Comprobación de Asistencia",
+        "texto": "1. El delegado de aula y oficial de planta son responsables de comprobar la asistencia de las y los estudiantes antes, durante y después de cada actividad académica. 2. El docente es responsable en cada actividad académica dentro o fuera del aula.",
+        "palabras_clave": ["comprobar", "asistencia", "delegado", "oficial de planta", "docente"]
+      },
+      {
+        "id": 22,
+        "numero": "Artículo 22",
+        "capitulo_num": 4,
+        "capitulo": "Capítulo IV: Régimen de Asistencias, Permisos y Reposos",
+        "seccion": "DE LA ASISTENCIA",
+        "titulo": "Plazo para Justificativo de Inasistencia",
+        "texto": "En caso de inasistencias justificadas, la o el estudiante deberá presentar ante el Director del Centro de Formación el correspondiente justificativo en un plazo no mayor de tres (3) días hábiles contados a partir del día de la inasistencia. De no hacerlo, la falta se considerará injustificada.",
+        "palabras_clave": ["inasistencia", "justificativo", "tres dias", "habiles", "director", "injustificada"]
+      },
+      {
+        "id": 23,
+        "numero": "Artículo 23",
+        "capitulo_num": 4,
+        "capitulo": "Capítulo IV: Régimen de Asistencias, Permisos y Reposos",
+        "seccion": "DE LOS PERMISOS",
+        "titulo": "Solicitud de Permisos",
+        "texto": "El permiso podrá ser otorgado mediante autorización escrita o electrónica por el Director del Centro de Formación cuando exista causa justificada con al menos cinco (5) días de antelación al día solicitado.",
+        "palabras_clave": ["permiso", "solicitud", "director", "cinco dias", "antelacion"]
+      },
+      {
+        "id": 24,
+        "numero": "Artículo 24",
+        "capitulo_num": 4,
+        "capitulo": "Capítulo IV: Régimen de Asistencias, Permisos y Reposos",
+        "seccion": "DE LOS PERMISOS",
+        "titulo": "Límite de Permisos",
+        "texto": "El permiso otorgado no podrá ser superior a tres (3) días de actividades académicas. Si excede los 3 días se debe presentar informe detallado. No podrá solicitar permisos justificados más de dos (2) veces al mes.",
+        "palabras_clave": ["limite", "permiso", "tres dias", "dos veces al mes", "informe"]
+      },
+      {
+        "id": 25,
+        "numero": "Artículo 25",
+        "capitulo_num": 4,
+        "capitulo": "Capítulo IV: Régimen de Asistencias, Permisos y Reposos",
+        "seccion": "DE LOS REPOSOS MÉDICOS",
+        "titulo": "Definición de Reposo Médico",
+        "texto": "Es toda certificación o justificativo emitido por los profesionales médicos.",
+        "palabras_clave": ["reposo medico", "certificacion", "medico", "salud"]
+      },
+      {
+        "id": 26,
+        "numero": "Artículo 26",
+        "capitulo_num": 4,
+        "capitulo": "Capítulo IV: Régimen de Asistencias, Permisos y Reposos",
+        "seccion": "DE LOS REPOSOS MÉDICOS",
+        "titulo": "Clasificación por Razones de Reposo",
+        "texto": "1. POR RAZONES DEL PROCESO FORMATIVO: Reposos emitidos por lesionarse en actividades propias del proceso. 2. POR RAZONES OCURRIDAS FUERA DEL CENTRO: Reposos emitidos fuera que afecten el aprendizaje. Debe asistir al servicio médico en 3 días hábiles.",
+        "palabras_clave": ["reposo", "lesion", "fuera", "servicio medico", "tres dias"]
+      },
+      {
+        "id": 27,
+        "numero": "Artículo 27",
+        "capitulo_num": 4,
+        "capitulo": "Capítulo IV: Régimen de Asistencias, Permisos y Reposos",
+        "seccion": "DE LOS REPOSOS MÉDICOS",
+        "titulo": "Clasificación de Reposos",
+        "texto": "Los reposos médicos se clasificarán en: 1. DOMICILIARIO: Permanecer en residencia por fuerza mayor. 2. POR HOSPITALIZACIÓN: Intervención quirúrgica o internación hasta 15 días. 3. INTERNO: En las instalaciones del servicio médico del CEFO.",
+        "palabras_clave": ["domiciliario", "hospitalizacion", "interno", "reposos", "15 dias"]
+      },
+      {
+        "id": 28,
+        "numero": "Artículo 28",
+        "capitulo_num": 5,
+        "capitulo": "Capítulo V: Mérito y Demérito",
+        "seccion": "DEL MÉRITO",
+        "titulo": "Definición de Incentivos",
+        "texto": "Los incentivos son el reconocimiento público o privado que se otorgan a la o el estudiante que haya efectuado una acción meritoria de especial relevancia.",
+        "palabras_clave": ["incentivos", "reconocimiento", "merito", "accion meritoria"]
+      },
+      {
+        "id": 29,
+        "numero": "Artículo 29",
+        "capitulo_num": 5,
+        "capitulo": "Capítulo V: Mérito y Demérito",
+        "seccion": "DEL MÉRITO",
+        "titulo": "Valoración por Puntos",
+        "texto": "Los incentivos serán valorados por puntos acumulados por concepto de acreencias y se denominarán mérito, los cuales se computarán al final de cada trayecto.",
+        "palabras_clave": ["puntos", "acreencias", "valoracion", "merito"]
+      },
+      {
+        "id": 30,
+        "numero": "Artículo 30",
+        "capitulo_num": 5,
+        "capitulo": "Capítulo V: Mérito y Demérito",
+        "seccion": "DEL MÉRITO",
+        "titulo": "Puntos de Mérito Iniciales (400 puntos)",
+        "texto": "Las y los estudiantes dispondrán de cuatrocientos (400) puntos al comienzo de su programa de formación, distribuidos: 1. TRAYECTO INICIAL: Cien (100) puntos. 2. TRAYECTO I: Ciento cincuenta (150) puntos. 3. TRAYECTO II: Ciento cincuenta (150) puntos. La disminución de puntos por sanciones se denomina demérito.",
+        "palabras_clave": ["400 puntos", "puntos iniciales", "merito", "demerito", "trayecto inicial", "100 puntos", "150 puntos"]
+      },
+      {
+        "id": 43,
+        "numero": "Artículo 43",
+        "capitulo_num": 5,
+        "capitulo": "Capítulo V: Mérito y Demérito",
+        "seccion": "DEL DEMÉRITO DE LAS SANCIONES",
+        "titulo": "Definición de Sanción y Demérito",
+        "texto": "Las sanciones son correctivos disciplinarios impuestos por la autoridad competente a la o el estudiante que haya cometido faltas. Los puntos disminuidos se denominan demérito.",
+        "palabras_clave": ["sanciones", "correctivos", "demerito", "descuento puntos"]
+      },
+      {
+        "id": 44,
+        "numero": "Artículo 44",
+        "capitulo_num": 5,
+        "capitulo": "Capítulo V: Mérito y Demérito",
+        "seccion": "DEL DEMÉRITO DE LAS SANCIONES",
+        "titulo": "Disminución de Puntos",
+        "texto": "Los puntos otorgados disminuirán de acuerdo a los correctivos disciplinarios que se apliquen a cada estudiante en particular; esta disminución se denominará demérito.",
+        "palabras_clave": ["disminucion", "puntos", "demerito", "correctivos"]
+      },
+      {
+        "id": 57,
+        "numero": "Artículo 57",
+        "capitulo_num": 6,
+        "capitulo": "Capítulo VI: Orden de Mérito",
+        "seccion": "DEL ORDEN DE MÉRITO",
+        "titulo": "Definición de Orden de Mérito",
+        "texto": "El orden de mérito alude a la posición de eficiencia ocupada por la o el estudiante en cada trayecto de su proceso formativo, computando la sumatoria de los puntos acumulados.",
+        "palabras_clave": ["orden de merito", "posicion", "eficiencia", "promedio"]
+      },
+      {
+        "id": 58,
+        "numero": "Artículo 58",
+        "capitulo_num": 6,
+        "capitulo": "Capítulo VI: Orden de Mérito",
+        "seccion": "DEL ORDEN DE MÉRITO",
+        "titulo": "Renglones Evaluados para el Orden de Mérito",
+        "texto": "Los renglones a evaluar son: Rendimiento Académico, Reconocimientos e Incentivos, Responsabilidad y Conducta, Disposición al Servicio, Ética, Participación en Eventos Culturales y Deportivos, y Obtención de Jerarquías.",
+        "palabras_clave": ["renglones", "rendimiento academico", "conducta", "etica", "deportes", "jerarquias"]
+      },
+      {
+        "id": 59,
+        "numero": "Artículo 59",
+        "capitulo_num": 7,
+        "capitulo": "Capítulo VII: Uso Correcto del Uniforme, Prendas y Dotaciones",
+        "seccion": "DEL USO DE LOS UNIFORMES",
+        "titulo": "Uso Obligatorio del Uniforme",
+        "texto": "Las y los estudiantes no profesionales que cursen trayecto inicial, I y II deben hacer uso en todo momento del uniforme reglamentario e implementos de identificación durante actividades académicas o vinculación social.",
+        "palabras_clave": ["uniforme", "obligatorio", "reglamentario", "identificacion"]
+      },
+      {
+        "id": 60,
+        "numero": "Artículo 60",
+        "capitulo_num": 7,
+        "capitulo": "Capítulo VII: Uso Correcto del Uniforme, Prendas y Dotaciones",
+        "seccion": "DEL USO DE LOS UNIFORMES",
+        "titulo": "Carácter Personal e Intransferible",
+        "texto": "El uso de los uniformes es personal e intransferible, fundamentado en preservar la imagen institucional. Prohibido prestar o donar prendas a terceros.",
+        "palabras_clave": ["personal", "intransferible", "uniforme", "prestar", "imagen"]
+      },
+      {
+        "id": 62,
+        "numero": "Artículo 62",
+        "capitulo_num": 7,
+        "capitulo": "Capítulo VII: Uso Correcto del Uniforme, Prendas y Dotaciones",
+        "seccion": "DEL USO DE LOS UNIFORMES",
+        "titulo": "Comportamiento con el Uniforme",
+        "texto": "Al hacer uso del uniforme, deberán mantener un comportamiento respetuoso, honorable, cabal y disciplinado como muestra del espíritu de la UNES.",
+        "palabras_clave": ["comportamiento", "honor", "respeto", "uniforme"]
+      },
+      {
+        "id": 64,
+        "numero": "Artículo 64",
+        "capitulo_num": 7,
+        "capitulo": "Capítulo VII: Uso Correcto del Uniforme, Prendas y Dotaciones",
+        "seccion": "DEL USO DE LOS UNIFORMES",
+        "titulo": "Uso del Carnet de Identificación",
+        "texto": "Usarán en todo momento el carnet expedido por la UNES de forma visible a nivel del tórax (lado izquierdo). En caso de pérdida, extravío o deterioro debe reponerlo previa denuncia.",
+        "palabras_clave": ["carnet", "torax", "izquierdo", "visible", "credencial", "reponer"]
+      },
+      {
+        "id": 68,
+        "numero": "Artículo 68",
+        "capitulo_num": 8,
+        "capitulo": "Capítulo VIII: Representación Estudiantil",
+        "seccion": "REPRESENTACIÓN ESTUDIANTIL",
+        "titulo": "Jerarquías Estudiantiles",
+        "texto": "La representación de las y los estudiantes no profesionales se clasifica: En Trayecto I: Jefe de Escuadra, Delegado, Delegado Jefe, Distinguido. En Trayecto II: Distinguido Mayor. En Trayecto III: Primer Delegado. En Trayecto IV: Primer Brigadier y Brigadier Mayor.",
+        "palabras_clave": ["jerarquias", "jefe de escuadra", "delegado", "distinguido", "brigadier mayor", "representacion"]
+      },
+      {
+        "id": 74,
+        "numero": "Artículo 74",
+        "capitulo_num": 8,
+        "capitulo": "Capítulo VIII: Representación Estudiantil",
+        "seccion": "DEL CONSEJO ESTUDIANTIL",
+        "titulo": "El Consejo Estudiantil",
+        "texto": "Es la instancia de participación de las y los estudiantes representada por el Brigadier Mayor y Primer Brigadier para presentar opiniones y propuestas de mejora ante el Consejo Directivo.",
+        "palabras_clave": ["consejo estudiantil", "participacion", "propuestas", "mejora"]
+      },
+      {
+        "id": 78,
+        "numero": "Artículo 78",
+        "capitulo_num": 9,
+        "capitulo": "Capítulo IX: Supervisión, Responsabilidades y Régimen Disciplinario",
+        "seccion": "SUPERVISIÓN CONTINUA",
+        "titulo": "Sistema de Supervisión Continua",
+        "texto": "La UNES desarrollará un sistema de supervisión continua y regular a las y los estudiantes para realizar seguimiento y acompañamiento en el cumplimiento de deberes.",
+        "palabras_clave": ["supervision continua", "seguimiento", "acompañamiento"]
+      },
+      {
+        "id": 89,
+        "numero": "Artículo 89",
+        "capitulo_num": 9,
+        "capitulo": "Capítulo IX: Supervisión, Responsabilidades y Régimen Disciplinario",
+        "seccion": "CLASIFICACIÓN DE LAS FALTAS",
+        "titulo": "Clasificación de Faltas Disciplinarias",
+        "texto": "Las faltas a la disciplina se clasifican según la naturaleza del hecho cometido en: 1. Faltas Leves (Art. 90). 2. Faltas Graves (Art. 91). 3. Faltas Gravísimas (Art. 92).",
+        "palabras_clave": ["clasificacion faltas", "leves", "graves", "gravisimas", "tipos de faltas"]
+      },
+      {
+        "id": 90,
+        "numero": "Artículo 90",
+        "capitulo_num": 9,
+        "capitulo": "Capítulo IX: Supervisión, Responsabilidades y Régimen Disciplinario",
+        "seccion": "FALTAS LEVES",
+        "titulo": "Faltas Leves (15 Puntos de Demérito)",
+        "texto": "Se consideran faltas leves todo comportamiento que por su índole afecta indirectamente a otros o a bienes. Ponderación de 15 PUNTOS DE DEMÉRITO. Ejemplos principales:\n1. Incumplir normas de servicios estudiantiles (biblioteca, deportes).\n4. No prestar debida atención a docentes.\n5. Ingerir alimentos o bebidas dentro del ambiente de clase.\n10. Dirigirse de forma incorrecta a un superior.\n11. Descuido en el aseo y orden personal/lugar.\n12. Llegar retardado sin causa justificada a clases.\n29. Venta o consumo de golosinas en el aula.\n30. Cambiarse el uniforme en lugares no permitidos.",
+        "palabras_clave": ["faltas leves", "falta leve", "15 puntos", "demerito", "retardos", "llegar tarde", "comer en clase", "descuido", "atencion", "golosinas"]
+      },
+      {
+        "id": 91,
+        "numero": "Artículo 91",
+        "capitulo_num": 9,
+        "capitulo": "Capítulo IX: Supervisión, Responsabilidades y Régimen Disciplinario",
+        "seccion": "FALTAS GRAVES",
+        "titulo": "Faltas Graves (30 Puntos de Demérito)",
+        "texto": "Se considera falta grave todo comportamiento que afecta significativamente a la Universidad o sus miembros. Ponderación de 30 PUNTOS DE DEMÉRITO. Ejemplos principales:\n1. Inasistencias injustificadas a actividades programadas.\n3. Usar celulares, música, audífonos o tecnología durante clases sin autorización.\n8. Incumplir con el uso correcto del uniforme y prendas.\n9. Negligencia en el cumplimiento de orden legítima de superior.\n10. Causar daños mayores a bienes e infraestructura.\n14. Ofender o provocar con palabras o gestos a autoridad o compañero.\n15. Simular enfermedad para evadir cumplimiento de instrucción.\n28. Dar muestras de insubordinación.",
+        "palabras_clave": ["faltas graves", "falta grave", "30 puntos", "demerito", "inasistencia", "celulares en clase", "tecnologia", "insubordinacion", "daños mayores", "simular enfermedad", "ofender superior"]
+      },
+      {
+        "id": 92,
+        "numero": "Artículo 92",
+        "capitulo_num": 9,
+        "capitulo": "Capítulo IX: Supervisión, Responsabilidades y Régimen Disciplinario",
+        "seccion": "FALTAS GRAVÍSIMAS",
+        "titulo": "Faltas Gravísimas (Consejo Disciplinario y Retiro / Expulsión)",
+        "texto": "Son faltas gravísimas cualquier acto que atente contra los Derechos Humanos, la integridad física o moral, o constituya delito. Conllevan la medida de RETIRO INMEDIATO (EXPULSIÓN). Ejemplos principales:\n2. Presentarse o consumir bebidas alcohólicas o drogas/estupefacientes.\n4. Realizar actos lascivos o sexuales en el recinto universitario.\n8. Copiarse, cometer plagio académico o fraude en exámenes/evaluaciones.\n12. Portar o introducir armas de fuego, armas blancas o explosivos.\n21. Vocabulario soez, acosar u hostigar sexualmente a personas.\n26. Agredir físicamente a una autoridad, superior o compañero.\n44. Suplantación de identidad en evaluaciones o actividades.",
+        "palabras_clave": ["faltas gravisimas", "falta gravisima", "expulsion", "retiro inmediato", "alcohol", "drogas", "armas", "copiarse", "plagio", "fraude", "examen", "agresion fisica", "pelea", "acoso sexual", "suplantacion"]
+      },
+      {
+        "id": 93,
+        "numero": "Artículo 93",
+        "capitulo_num": 9,
+        "capitulo": "Capítulo IX: Supervisión, Responsabilidades y Régimen Disciplinario",
+        "seccion": "CLASIFICACIÓN DE SANCIONES",
+        "titulo": "Clasificación de Sanciones Disciplinarias",
+        "texto": "1. FALTAS LEVES: Programas cortos de supervisión intensiva (Art. 94).\n2. FALTAS GRAVES: Programas de supervisión intensiva (Art. 95).\n3. FALTAS GRAVÍSIMAS: Medida de Retiro Inmediato de la Universidad recomendado por el Consejo Disciplinario (Art. 96).",
+        "palabras_clave": ["sanciones", "sancion", "correctivos", "medidas", "supervision intensiva", "retiro"]
+      },
+      {
+        "id": 94,
+        "numero": "Artículo 94",
+        "capitulo_num": 9,
+        "capitulo": "Capítulo IX: Supervisión, Responsabilidades y Régimen Disciplinario",
+        "seccion": "PROGRAMAS DE SUPERVISIÓN CORTOS",
+        "titulo": "Sanciones por Faltas Leves",
+        "texto": "Consistirán en: 1. Amonestación verbal. 2. Trabajo escrito breve y exposición oral reflexiva ante los compañeros. 3. Práctica intensiva (física/técnica) de media (1/2) hora. 4. Tareas académicas o de campo. 5. Restricción de permiso ordinario hasta por 15 días.",
+        "palabras_clave": ["sancion leve", "amonestacion verbal", "trabajo escrito", "practica intensiva", "media hora", "restriccion permiso", "15 dias"]
+      },
+      {
+        "id": 95,
+        "numero": "Artículo 95",
+        "capitulo_num": 9,
+        "capitulo": "Capítulo IX: Supervisión, Responsabilidades y Régimen Disciplinario",
+        "seccion": "PROGRAMAS DE SUPERVISIÓN INTENSIVA",
+        "titulo": "Sanciones por Faltas Graves",
+        "texto": "Consistirán en: 1. Amonestación escrita en expediente. 2. Trabajo escrito breve y exposición oral. 3. Reentrenamiento de una (1) hora. 4. Labores de mantenimiento de las instalaciones físicas. 5. Suspensión de permiso ordinario hasta por un mes. 6. Suspensión o anulación de jerarquía.",
+        "palabras_clave": ["sancion grave", "amonestacion escrita", "reentrenamiento", "mantenimiento", "suspension permiso", "un mes", "jerarquia"]
+      },
+      {
+        "id": 96,
+        "numero": "Artículo 96",
+        "capitulo_num": 9,
+        "capitulo": "Capítulo IX: Supervisión, Responsabilidades y Régimen Disciplinario",
+        "seccion": "PROGRAMA PARA FALTAS GRAVÍSIMAS",
+        "titulo": "Sanción por Faltas Gravísimas",
+        "texto": "El Consejo Disciplinario recomendará la aplicación de la Medida de Retiro Inmediato de la Universidad (Expulsión definitiva del discente).",
+        "palabras_clave": ["sancion gravisima", "retiro inmediato", "expulsion", "desincorporacion"]
+      },
+      {
+        "id": 101,
+        "numero": "Artículo 101",
+        "capitulo_num": 10,
+        "capitulo": "Capítulo X: De los Sujetos (Consejo Disciplinario, Procedimiento y Recursos)",
+        "seccion": "INTEGRANTES DEL CONSEJO DISCIPLINARIO",
+        "titulo": "Integrantes del Consejo Disciplinario",
+        "texto": "El Consejo Disciplinario está integrado por: 1. Secretaria/o de Consejo. 2. Coordinador de Control de Estudios. 3. Coordinador Académico. 4. Coordinador de Vinculación Social. 5. Coordinador Administrativo. 6. Delegado de Consultoría Jurídica. 7. Representante PNF. 8. Jefe UNACIES. 9. Oficiales de Planta.",
+        "palabras_clave": ["consejo disciplinario", "integrantes", "quienes forman", "secretario", "juridica"]
+      },
+      {
+        "id": 105,
+        "numero": "Artículo 105",
+        "capitulo_num": 10,
+        "capitulo": "Capítulo X: De los Sujetos (Consejo Disciplinario, Procedimiento y Recursos)",
+        "seccion": "PROCEDIMIENTO DISCIPLINARIO",
+        "titulo": "Inicio del Procedimiento Disciplinario",
+        "texto": "El procedimiento disciplinario por faltas gravísimas se inicia mediante denuncia oral, escrita o de oficio ante el Consejo Disciplinario dentro de los 3 días hábiles siguientes. Se investigará dentro de 5 días hábiles notificando al Director.",
+        "palabras_clave": ["procedimiento", "denuncia", "investigacion", "notificacion", "tres dias"]
+      },
+      {
+        "id": 122,
+        "numero": "Artículo 122",
+        "capitulo_num": 10,
+        "capitulo": "Capítulo X: De los Sujetos (Consejo Disciplinario, Procedimiento y Recursos)",
+        "seccion": "RECURSO DE RECONSIDERACIÓN",
+        "titulo": "Derecho a Reconsideración",
+        "texto": "Cuando un estudiante sea retirado se le notificará por escrito. Podrá ejercer Recurso de Reconsideración ante el Director del Centro dentro de los tres (3) días hábiles siguientes a la notificación.",
+        "palabras_clave": ["recurso", "reconsideracion", "apelar", "apelacion", "director", "tres dias"]
+      },
+      {
+        "id": 133,
+        "numero": "Artículo 133",
+        "capitulo_num": 10,
+        "capitulo": "Capítulo X: De los Sujetos (Consejo Disciplinario, Procedimiento y Recursos)",
+        "seccion": "CONSEJO DE APELACIONES",
+        "titulo": "Consejo de Apelaciones",
+        "texto": "Instancia colegiada superior encargada de resolver en última instancia los recursos jerárquicos interpuestos por los estudiantes en materia disciplinaria.",
+        "palabras_clave": ["consejo de apelaciones", "ultima instancia", "recurso jerarquico"]
+      },
+      {
+        "id": 135,
+        "numero": "Artículo 135",
+        "capitulo_num": 11,
+        "capitulo": "Capítulo XI: Disposiciones Finales y Derogatoria",
+        "seccion": "DISPOSICIONES FINALES",
+        "titulo": "Duda en la Interpretación",
+        "texto": "En caso de surgir dudas razonables en la interpretación o aplicación de las presentes normas, se optará siempre por la interpretación que más beneficie a las y los estudiantes.",
+        "palabras_clave": ["duda", "interpretacion", "beneficie al estudiante", "in dubio pro discente"]
+      },
+      {
+        "id": 137,
+        "numero": "Artículo 137",
+        "capitulo_num": 11,
+        "capitulo": "Capítulo XI: Disposiciones Finales y Derogatoria",
+        "seccion": "DISPOSICIONES FINALES",
+        "titulo": "Obligatoriedad del Conocimiento",
+        "texto": "El desconocimiento por parte de las y los estudiantes de las presentes Normas de Convivencia y Régimen Disciplinario no los exime de su observancia, cumplimiento y responsabilidades.",
+        "palabras_clave": ["desconocimiento", "saber", "no exime", "obligatorio"]
+      },
+      {
+        "id": 141,
+        "numero": "Artículo 141",
+        "capitulo_num": 11,
+        "capitulo": "Capítulo XI: Disposiciones Finales y Derogatoria",
+        "seccion": "DISPOSICIÓN DEROGATORIA",
+        "titulo": "Derogatoria de Normas Anteriores",
+        "texto": "Se deroga el texto íntegro de las Normas de Convivencia aprobadas en el Acuerdo N° 00270 del 18 de octubre de 2023. El presente acuerdo entra en vigencia a partir del 18 de julio de 2024.",
+        "palabras_clave": ["derogatoria", "acuerdo 0000692", "18 de julio 2024", "vigencia"]
+      }
+    ];
     </script>
+
+    <script src="app.js"></script>
 </body>
 </html>
