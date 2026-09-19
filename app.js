@@ -41,18 +41,15 @@ const typingIndicator = document.getElementById("typing-indicator");
 const notifSound = document.getElementById("notif-sound");
 const avatarMouth = document.getElementById("avatar-mouth");
 
-// ============================================================
-// INIT
-// ============================================================
 document.addEventListener("DOMContentLoaded", () => {
-    console.log("🚀 Unesito iniciando...");
+    console.log("🚀 Unesito iniciando desde app.js...");
     loadNormasData();
     setupEventListeners();
     updateWelcomeTime();
 });
 
 async function loadNormasData() {
-    // 1) PRIORIDAD: datos incrustados en index.html
+    // 1) Si el HTML ya tiene NORMAS_DATA_INLINE, úsalo
     if (typeof NORMAS_DATA_INLINE !== 'undefined' && Array.isArray(NORMAS_DATA_INLINE) && NORMAS_DATA_INLINE.length > 0) {
         NORMAS = NORMAS_DATA_INLINE;
         console.log(`✅ ${NORMAS.length} artículos cargados desde index.html`);
@@ -60,7 +57,7 @@ async function loadNormasData() {
         return;
     }
 
-    // 2) FALLBACK: fetch a normas.json
+    // 2) Si no, carga normas.json
     try {
         const res = await fetch('normas.json', { cache: 'no-store' });
         if (res.ok) {
@@ -69,23 +66,20 @@ async function loadNormasData() {
             renderArticles();
             return;
         }
-    } catch (e) { /* siguiente */ }
+    } catch (e) {
+        console.error("❌ Error cargando normas.json:", e);
+    }
 
-    // 3) Si nada funcionó
-    console.error("❌ No se pudieron cargar los artículos");
+    // 3) Error
     if (articlesGrid) {
         articlesGrid.innerHTML = `
             <div style="grid-column: 1/-1; text-align: center; padding: 40px; background: #FFF; border-radius: 16px;">
                 <span class="material-symbols-outlined" style="font-size: 48px; color: #EF4444;">error</span>
-                <h3 style="margin-top: 12px; color: #0A2A5C;">Error al cargar los artículos</h3>
-                <p style="color: #64748B;">Verifica que los datos estén disponibles.</p>
+                <h3 style="margin-top: 12px; color: #0A2A5C;">No se pudieron cargar los artículos</h3>
             </div>`;
     }
 }
 
-// ============================================================
-// UTILIDADES
-// ============================================================
 function updateWelcomeTime() {
     const wt = document.getElementById("welcome-time");
     if (wt) wt.textContent = formatTime(new Date());
@@ -105,9 +99,6 @@ function normalizeText(text) {
         .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()?¿¡"']/g, "");
 }
 
-// ============================================================
-// RENDERIZADO
-// ============================================================
 function renderArticles() {
     if (!articlesGrid) return;
     articlesGrid.innerHTML = "";
@@ -134,7 +125,6 @@ function renderArticles() {
             <div style="grid-column: 1/-1; text-align: center; padding: 40px; background: #FFF; border-radius: 16px; border: 1px dashed #CBD5E1;">
                 <span class="material-symbols-outlined" style="font-size: 48px; color: #94A3B8;">search_off</span>
                 <h3 style="margin-top: 12px; color: #0A2A5C;">No se encontraron artículos</h3>
-                <p style="color: #64748B; font-size: 14px; margin-top: 4px;">Intenta con otros términos o selecciona otro capítulo.</p>
             </div>`;
         return;
     }
@@ -158,15 +148,11 @@ function renderArticles() {
 
     document.querySelectorAll(".read-more-btn").forEach(btn => {
         btn.addEventListener("click", (e) => {
-            const id = parseInt(e.currentTarget.getAttribute("data-id"));
-            openModal(id);
+            openModal(parseInt(e.currentTarget.getAttribute("data-id")));
         });
     });
 }
 
-// ============================================================
-// MODAL
-// ============================================================
 function openModal(id) {
     const art = NORMAS.find(a => a.id === id);
     if (!art) return;
@@ -195,9 +181,6 @@ function closeModal() {
     selectedArticleForAsk = null;
 }
 
-// ============================================================
-// EVENT LISTENERS
-// ============================================================
 function setupEventListeners() {
     if (searchInput) {
         searchInput.addEventListener("input", (e) => {
@@ -281,9 +264,6 @@ function setupEventListeners() {
     }
 }
 
-// ============================================================
-// CHAT
-// ============================================================
 function openChat() {
     if (chatWidget) chatWidget.style.display = "flex";
     if (avatarBubble) avatarBubble.style.display = "none";
@@ -314,17 +294,7 @@ async function handleUserMessage(messageText) {
     showTypingIndicator(true);
     setAvatarMouth("thinking");
 
-    let responseData = null;
-    try {
-        const res = await fetch('/api/chat', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ message: messageText })
-        });
-        if (res.ok) responseData = await res.json();
-    } catch (e) { /* fallback */ }
-
-    if (!responseData) responseData = localChatEngine(messageText);
+    const responseData = localChatEngine(messageText);
 
     setTimeout(() => {
         showTypingIndicator(false);
@@ -378,9 +348,6 @@ function showTypingIndicator(show) {
     }
 }
 
-// ============================================================
-// MOTOR LOCAL DEL CHAT
-// ============================================================
 function localChatEngine(userQuery) {
     const q = normalizeText(userQuery);
 
