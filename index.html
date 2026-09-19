@@ -241,6 +241,350 @@
 
     <audio id="notif-sound" src="https://assets.mixkit.co/active_storage/sfx/2357/2357-84.wav" preload="auto"></audio>
 
-    <script src="app.js"></script>
+    <!-- DATOS Y LÓGICA INCRUSTADOS (sin dependencias externas) -->
+    <script>
+    // ============================================================
+    // DATOS
+    // ============================================================
+    const NORMAS_DATA_INLINE = [
+      {"id":1,"numero":"Artículo 1","capitulo_num":1,"capitulo":"Capítulo I: Objeto, Ámbito de Aplicación, Principios y Bases Doctrinarias","seccion":"OBJETO","titulo":"Objeto de las Normas de Convivencia","texto":"Las presentes Normas de Convivencia y Régimen Disciplinario con base a la misión y visión de nuestra Alma Mater de la Seguridad, tienen por objeto establecer el conjunto de disposiciones dirigidas a regular la actitud, conducta y comportamiento de las y los estudiantes, con el propósito de lograr relaciones armónicas, colaborativas y cooperativas fundamentadas en la responsabilidad, el respeto, la tolerancia y la disciplina de la Universidad Nacional Experimental de la Seguridad (UNES) y sus aulas de aprendizaje. Estas Normas de Convivencia y Régimen Disciplinario regirán las acciones u omisiones, aunque sean realizadas por las y los estudiantes en un lugar distinto al recinto universitario.","palabras_clave":["objeto","regula","conducta","comportamiento","relaciones armonicas","respeto","tolerancia","disciplina","fuera","dentro","aulas"]},
+      {"id":2,"numero":"Artículo 2","capitulo_num":1,"capitulo":"Capítulo I: Objeto, Ámbito de Aplicación, Principios y Bases Doctrinarias","seccion":"ÁMBITO DE APLICACIÓN","titulo":"Ámbito de Aplicación","texto":"Las presentes Normas de Convivencia y Régimen Disciplinario son aplicables a las y los estudiantes de la Universidad Nacional Experimental de la Seguridad (UNES) de los diferentes Programas Nacionales de Formación (PNF), desde trayecto inicial hasta el Trayecto IV.","palabras_clave":["ambito","aplicacion","estudiantes","discentes","pnf","trayecto","inicial","obligatorio"]},
+      {"id":3,"numero":"Artículo 3","capitulo_num":1,"capitulo":"Capítulo I: Objeto, Ámbito de Aplicación, Principios y Bases Doctrinarias","seccion":"PRINCIPIOS DE APLICACIÓN","titulo":"Principios Rectores","texto":"Estas Normas de Convivencia y Régimen Disciplinario se regirán bajo los siguientes principios: A. PRINCIPIO DE ACTUACIÓN: Implica la imparcialidad y justicia que pondrá de manifiesto la autoridad disciplinaria al momento de imponer la medida correspondiente, sin discriminación de raza, sexo, género, religión, preferencia política o condición social. B. PRINCIPIO DE INFORMACIÓN: Entendida como el derecho que tienen las y los estudiantes a estar informados por parte de las autoridades sobre las normas, reglas y procedimientos. C. PRINCIPIO DE RESPETO A LOS DERECHOS HUMANOS. D. PRINCIPIO DE IMPARCIALIDAD. E. PRINCIPIO DEL DEBIDO PROCESO. F. PRINCIPIO DE CELERIDAD. G. PRINCIPIO DE PRESUNCIÓN DE INOCENCIA. H. PRINCIPIO DE LEGALIDAD. I. PRINCIPIO DE VERACIDAD. J. PRINCIPIO DE PROPORCIONALIDAD. K. PRINCIPIO DE LA CONFIANZA LEGÍTIMA.","palabras_clave":["principios","actuacion","informacion","derechos humanos","ddhh","imparcialidad","debido proceso","celeridad","presuncion","inocencia","legalidad","veracidad","proporcionalidad"]},
+      {"id":4,"numero":"Artículo 4","capitulo_num":1,"capitulo":"Capítulo I: Objeto, Ámbito de Aplicación, Principios y Bases Doctrinarias","seccion":"BASES DOCTRINALES","titulo":"Pilares Fundamentales de la UNES","texto":"La permanencia de las y los estudiantes dentro de la UNES se basa en cuatro (04) pilares fundamentales: A. LA DISCIPLINA: Entendida como el cumplimiento fiel y ordenado de las presentes Normas. B. LA OBEDIENCIA: Consiste en el cumplimiento estricto de las órdenes, lineamientos y disposiciones legalmente emanadas por la autoridad competente. C. EL RESPETO: Acatamiento de los principios morales y éticos establecidos por la Universidad. D. LA SUBORDINACIÓN: Consiste en el acatamiento por parte de las y los estudiantes de las órdenes legalmente emanadas de sus autoridades y superiores jerárquicos.","palabras_clave":["bases","doctrinales","pilares","disciplina","obediencia","respeto","subordinacion","ordenes","superiores"]},
+      {"id":5,"numero":"Artículo 5","capitulo_num":2,"capitulo":"Capítulo II: De las Autoridades","seccion":"AUTORIDADES DE LA UNIVERSIDAD","titulo":"Autoridades Universitarias","texto":"Las Autoridades de la Universidad Nacional Experimental de la Seguridad son: Consejo Universitario, Rectora o Rector, Vicerrectoras o Vicerrectores y Secretaria o Secretario. PARÁGRAFO ÚNICO: Las Direcciones de Gestión Académicas tienen el rol de asesorar, evaluar y participar en los Consejos Disciplinarios.","palabras_clave":["autoridades","rector","rectora","vicerrector","secretario","consejo universitario"]},
+      {"id":6,"numero":"Artículo 6","capitulo_num":2,"capitulo":"Capítulo II: De las Autoridades","seccion":"AUTORIDADES DEL CENTRO DE FORMACIÓN","titulo":"Autoridades del Centro de Formación (CEFO)","texto":"Son autoridades del Centro de Formación: 1. La Directora o Director del Centro de Formación. 2. La Coordinadora o el Coordinador de: a. Académico. b. Vinculación Social y Creación Intelectual. c. Administrativo. d. Control de Estudios.","palabras_clave":["autoridades","cefo","director","coordinador","academico","vinculacion social","control de estudios"]},
+      {"id":7,"numero":"Artículo 7","capitulo_num":2,"capitulo":"Capítulo II: De las Autoridades","seccion":"ATRIBUCIONES DE LAS AUTORIDADES","titulo":"Atribuciones de las Autoridades","texto":"Son atribuciones de las autoridades de la UNES: 1. Dictar líneas, directrices y garantizar el estricto cumplimiento de las presentes normas. 2. Garantizar los mecanismos para fomentar la formación y la disciplina. 3. Reportar oportunamente las faltas de las cuales han sido testigos u observado.","palabras_clave":["atribuciones","directrices","reportar","faltas","supervisar"]},
+      {"id":8,"numero":"Artículo 8","capitulo_num":2,"capitulo":"Capítulo II: De las Autoridades","seccion":"LÍNEA DE MANDO","titulo":"Línea de Mando","texto":"La Línea de Mando es el canal de comunicación mediante el cual el escalón superior transmite sus órdenes, instrucciones e información de importancia a los escalones subordinados, ejerciendo la coordinación, supervisión y el control de su ejecución.","palabras_clave":["linea de mando","canal","comunicacion","ordenes","subordinados"]},
+      {"id":9,"numero":"Artículo 9","capitulo_num":2,"capitulo":"Capítulo II: De las Autoridades","seccion":"CADENA DE MANDO","titulo":"Cadena de Mando","texto":"La cadena de mando es un sistema de información con estructura jerárquica, partiendo desde la base superior hasta el nivel inferior de una organización. Establece la rendición de cuentas y la toma de decisiones.","palabras_clave":["cadena de mando","jerarquia","toma de decisiones"]},
+      {"id":10,"numero":"Artículo 10","capitulo_num":2,"capitulo":"Capítulo II: De las Autoridades","seccion":"ÓRGANO REGULAR","titulo":"El Órgano Regular","texto":"Es la instancia de comunicación utilizado por las y los estudiantes para transmitir el proceso de cumplimiento de las instrucciones, solicitudes o requisiciones necesarias. Cualquier estudiante que desee dirigirse a una autoridad debe hacerlo utilizando su órgano regular jerárquico por intermedio del Oficial de Planta del aula de aprendizaje.","palabras_clave":["organo regular","oficial de planta","comunicacion","solicitud","jerarquico"]},
+      {"id":11,"numero":"Artículo 11","capitulo_num":2,"capitulo":"Capítulo II: De las Autoridades","seccion":"ESTRUCTURA DE AULA","titulo":"Delegado de Aula y Oficial de Planta","texto":"Cada aula de clase tendrá una o un Delegado de Aula y un Oficial de Planta, quienes serán los responsables de velar por el cumplimiento de las normativas y servirán como primer escalón del órgano regular jerárquico.","palabras_clave":["delegado","oficial de planta","aula","responsables"]},
+      {"id":12,"numero":"Artículo 12","capitulo_num":3,"capitulo":"Capítulo III: De las y los Estudiantes, Permanencia, Derechos y Deberes","seccion":"DE LA PERMANENCIA","titulo":"Modalidades de Permanencia","texto":"Las y los estudiantes podrán cumplir modalidades de permanencia: interna y/o semi-interna. La modalidad interna consiste en actividades que exigen la pernocta en los Centros de Formación. La modalidad semi-interna consiste en actividades que no requieren pernocta permanente.","palabras_clave":["permanencia","interna","semi interna","pernocta","dormir","quedarse"]},
+      {"id":13,"numero":"Artículo 13","capitulo_num":3,"capitulo":"Capítulo III: De las y los Estudiantes, Permanencia, Derechos y Deberes","seccion":"DE LA PERMANENCIA","titulo":"Espera al Docente","texto":"Las y los estudiantes deberán esperar al docente en el aula de clase.","palabras_clave":["esperar","docente","aula","profesor"]},
+      {"id":14,"numero":"Artículo 14","capitulo_num":3,"capitulo":"Capítulo III: De las y los Estudiantes, Permanencia, Derechos y Deberes","seccion":"DE LA PERMANENCIA","titulo":"Postura al Intervenir","texto":"Las y los estudiantes deberán ponerse de pie al momento de intercambiar o emitir opiniones con las personas que participan en la actividad, e identificarse.","palabras_clave":["ponerse de pie","identificarse","opinar","hablar"]},
+      {"id":15,"numero":"Artículo 15","capitulo_num":3,"capitulo":"Capítulo III: De las y los Estudiantes, Permanencia, Derechos y Deberes","seccion":"DE LA PERMANENCIA","titulo":"Prohibición de Alimentos en Clase","texto":"Las y los estudiantes deben abstenerse de consumir bebidas o alimentos dentro de las aulas de clase.","palabras_clave":["alimentos","bebidas","comer","beber","aula","salon"]},
+      {"id":16,"numero":"Artículo 16","capitulo_num":3,"capitulo":"Capítulo III: De las y los Estudiantes, Permanencia, Derechos y Deberes","seccion":"DE LA PERMANENCIA","titulo":"Permanencia Fuera de Aula","texto":"Las y los estudiantes no podrán permanecer fuera de las aulas de clase y espacios de aprendizaje en horas de clase sin autorización o permiso por parte de la autoridad correspondiente.","palabras_clave":["permanecer fuera","permiso","autorizacion","horas de clase"]},
+      {"id":17,"numero":"Artículo 17","capitulo_num":3,"capitulo":"Capítulo III: De las y los Estudiantes, Permanencia, Derechos y Deberes","seccion":"DE LA PERMANENCIA","titulo":"Uniforme y Carnet Obligatorios","texto":"Las y los estudiantes no podrán ingresar a las aulas de clase, espacios o actividades, si no portan el respectivo uniforme y carnet, salvo aquellos casos que cuenten con la debida autorización. Tampoco podrán permanecer en áreas administrativas del CEFO sin acompañamiento.","palabras_clave":["ingresar","uniforme","carnet","credencial","autorizacion","cefo"]},
+      {"id":18,"numero":"Artículo 18","capitulo_num":3,"capitulo":"Capítulo III: De las y los Estudiantes, Permanencia, Derechos y Deberes","seccion":"DE LOS DERECHOS","titulo":"Derechos de las y los Estudiantes","texto":"Las y los estudiantes de la UNES tienen derecho a: 1. Un trato digno y respetuoso. 2. La igualdad y a no ser víctimas de discriminación. 3. Recibir asistencia médica-odontológica integral, orientación psicológica y jurídica. 4. Educación continua y de calidad. 5. La defensa y al debido proceso. 6. Asistir a actividades académicas. 7. Permisos especiales para atletas y artistas. 8. Ser informados de las normas. 9. Disponer de tiempo para estudio libre. 14. Una dotación básica de prendas de vestir. 15. Recibir certificación y títulos.","palabras_clave":["derechos","derecho","trato digno","igualdad","no discriminacion","asistencia medica","psicologia","educacion","debido proceso","defensa","dotacion","titulos"]},
+      {"id":19,"numero":"Artículo 19","capitulo_num":3,"capitulo":"Capítulo III: De las y los Estudiantes, Permanencia, Derechos y Deberes","seccion":"DE LOS DEBERES","titulo":"Deberes de las y los Estudiantes","texto":"Son deberes de las y los estudiantes: 1. Cumplir de modo diligente las normas. 2. Responder 'ordene' de manera respetuosa ante un superior. 3. Dirigirse solo como ciudadano o ciudadana. 5. Adoptar posición de saludo. 6. Mantener la distancia de cuatro (4) pasos en posición firme para hablar con autoridades. 10. Asistir puntualmente. 15. Portar credencial visible. 28. Prohibido estar tomados de la mano, abrazados, besándose dentro de la universidad. 29. Prohibido el uso de celulares, música o audífonos durante clases sin autorización.","palabras_clave":["deberes","deber","ordene","saludo","distancia","cuatro pasos","firme","puntualidad","credencial","abrazados","besandose","celulares","audifonos","musica"]},
+      {"id":20,"numero":"Artículo 20","capitulo_num":4,"capitulo":"Capítulo IV: Régimen de Asistencias, Permisos y Reposos","seccion":"DE LA ASISTENCIA","titulo":"Asistencia Obligatoria","texto":"La asistencia a clase es obligatoria. Las y los estudiantes que para el momento de pasar lista no se encuentren en el aula se considerarán ausentes, y deberán ser reportados de forma inmediata mediante el Órgano Regular.","palabras_clave":["asistencia","obligatoria","lista","ausente","reportado"]},
+      {"id":21,"numero":"Artículo 21","capitulo_num":4,"capitulo":"Capítulo IV: Régimen de Asistencias, Permisos y Reposos","seccion":"MOMENTOS DE LA ASISTENCIA","titulo":"Comprobación de Asistencia","texto":"1. El delegado de aula y oficial de planta son responsables de comprobar la asistencia de las y los estudiantes antes, durante y después de cada actividad académica. 2. El docente es responsable en cada actividad académica dentro o fuera del aula.","palabras_clave":["comprobar","asistencia","delegado","oficial de planta","docente"]},
+      {"id":22,"numero":"Artículo 22","capitulo_num":4,"capitulo":"Capítulo IV: Régimen de Asistencias, Permisos y Reposos","seccion":"DE LA ASISTENCIA","titulo":"Plazo para Justificativo","texto":"En caso de inasistencias justificadas, la o el estudiante deberá presentar ante el Director del Centro de Formación el correspondiente justificativo en un plazo no mayor de tres (3) días hábiles. De no hacerlo, la falta se considerará injustificada.","palabras_clave":["inasistencia","justificativo","tres dias","habiles","director","injustificada"]},
+      {"id":23,"numero":"Artículo 23","capitulo_num":4,"capitulo":"Capítulo IV: Régimen de Asistencias, Permisos y Reposos","seccion":"DE LOS PERMISOS","titulo":"Solicitud de Permisos","texto":"El permiso podrá ser otorgado mediante autorización escrita o electrónica por el Director del Centro de Formación cuando exista causa justificada con al menos cinco (5) días de antelación al día solicitado.","palabras_clave":["permiso","solicitud","director","cinco dias","antelacion"]},
+      {"id":24,"numero":"Artículo 24","capitulo_num":4,"capitulo":"Capítulo IV: Régimen de Asistencias, Permisos y Reposos","seccion":"DE LOS PERMISOS","titulo":"Límite de Permisos","texto":"El permiso otorgado no podrá ser superior a tres (3) días de actividades académicas. Si excede los 3 días se debe presentar informe detallado. No podrá solicitar permisos justificados más de dos (2) veces al mes.","palabras_clave":["limite","permiso","tres dias","dos veces al mes","informe"]},
+      {"id":25,"numero":"Artículo 25","capitulo_num":4,"capitulo":"Capítulo IV: Régimen de Asistencias, Permisos y Reposos","seccion":"DE LOS REPOSOS MÉDICOS","titulo":"Definición de Reposo Médico","texto":"Es toda certificación o justificativo emitido por los profesionales médicos.","palabras_clave":["reposo medico","certificacion","medico","salud"]},
+      {"id":26,"numero":"Artículo 26","capitulo_num":4,"capitulo":"Capítulo IV: Régimen de Asistencias, Permisos y Reposos","seccion":"DE LOS REPOSOS MÉDICOS","titulo":"Clasificación por Razones","texto":"1. POR RAZONES DEL PROCESO FORMATIVO: Reposos emitidos por lesionarse en actividades propias del proceso. 2. POR RAZONES OCURRIDAS FUERA DEL CENTRO: Reposos emitidos fuera que afecten el aprendizaje. Debe asistir al servicio médico en 3 días hábiles.","palabras_clave":["reposo","lesion","fuera","servicio medico","tres dias"]},
+      {"id":27,"numero":"Artículo 27","capitulo_num":4,"capitulo":"Capítulo IV: Régimen de Asistencias, Permisos y Reposos","seccion":"DE LOS REPOSOS MÉDICOS","titulo":"Clasificación de Reposos","texto":"Los reposos médicos se clasificarán en: 1. DOMICILIARIO: Permanecer en residencia por fuerza mayor. 2. POR HOSPITALIZACIÓN: Intervención quirúrgica o internación hasta 15 días. 3. INTERNO: En las instalaciones del servicio médico del CEFO.","palabras_clave":["domiciliario","hospitalizacion","interno","reposos","15 dias"]},
+      {"id":28,"numero":"Artículo 28","capitulo_num":5,"capitulo":"Capítulo V: Mérito y Demérito","seccion":"DEL MÉRITO","titulo":"Definición de Incentivos","texto":"Los incentivos son el reconocimiento público o privado que se otorgan a la o el estudiante que haya efectuado una acción meritoria de especial relevancia.","palabras_clave":["incentivos","reconocimiento","merito","accion meritoria"]},
+      {"id":29,"numero":"Artículo 29","capitulo_num":5,"capitulo":"Capítulo V: Mérito y Demérito","seccion":"DEL MÉRITO","titulo":"Valoración por Puntos","texto":"Los incentivos serán valorados por puntos acumulados por concepto de acreencias y se denominarán mérito, los cuales se computarán al final de cada trayecto.","palabras_clave":["puntos","acreencias","valoracion","merito"]},
+      {"id":30,"numero":"Artículo 30","capitulo_num":5,"capitulo":"Capítulo V: Mérito y Demérito","seccion":"DEL MÉRITO","titulo":"Puntos de Mérito Iniciales","texto":"Las y los estudiantes dispondrán de cuatrocientos (400) puntos al comienzo de su programa: 1. TRAYECTO INICIAL: Cien (100) puntos. 2. TRAYECTO I: Ciento cincuenta (150) puntos. 3. TRAYECTO II: Ciento cincuenta (150) puntos. La disminución de puntos por sanciones se denomina demérito.","palabras_clave":["400 puntos","puntos iniciales","merito","demerito","trayecto inicial","100 puntos","150 puntos"]},
+      {"id":31,"numero":"Artículo 31","capitulo_num":5,"capitulo":"Capítulo V: Mérito y Demérito","seccion":"DEL MÉRITO","titulo":"Promoción de Incentivos","texto":"Las autoridades de los Centros de Formación promoverán incentivos a las y los estudiantes más destacados en el cumplimiento de sus deberes, estimulando el sentido de dignidad, apego y compromiso con los principios de la UNES.","palabras_clave":["incentivos","promocion","destacados","dignidad","compromiso"]},
+      {"id":37,"numero":"Artículo 37","capitulo_num":5,"capitulo":"Capítulo V: Mérito y Demérito","seccion":"CLASIFICACIÓN DE INCENTIVOS","titulo":"Áreas para Incentivos","texto":"Para la aplicación de Incentivos al estudiante se considerarán: 1. ÁREA ACADÉMICA: Investigación, innovación, esfuerzo académico, material didáctico, ponderación superior a 18 puntos. 2. ÁREA DE DESARROLLO DE LA PERSONALIDAD: Espíritu competitivo, arrojo, trabajos culturales, himnos, creatividad. 3. ÁREA FÍSICO-DEPORTIVA: Destacada actuación en competencias internacionales, nacionales, interinstitucionales o comunales.","palabras_clave":["incentivos","areas","academica","personalidad","fisico deportiva","investigacion","deportes","cultura"]},
+      {"id":38,"numero":"Artículo 38","capitulo_num":5,"capitulo":"Capítulo V: Mérito y Demérito","seccion":"CLASIFICACIÓN DE INCENTIVOS","titulo":"Certificados de Reconocimiento","texto":"Al finalizar cada trayecto, se otorgarán certificados de reconocimiento: a) HONOR AL MÉRITO ACADÉMICO. b) CONDUCTA: menor puntaje de demérito. c) ESPÍRITU INSTITUCIONAL. d) ESPÍRITU DEPORTIVO. e) MENCIONES HONORÍFICAS de graduación.","palabras_clave":["certificados","reconocimiento","honor academico","conducta","espiritu institucional","espiritu deportivo","menciones honorificas"]},
+      {"id":39,"numero":"Artículo 39","capitulo_num":5,"capitulo":"Capítulo V: Mérito y Demérito","seccion":"CLASIFICACIÓN DE INCENTIVOS","titulo":"Tipos de Incentivos","texto":"Los incentivos, recompensas y premios son: a) Felicitación escrita. b) Felicitación pública. c) Asignación de Jerarquía. d) Certificado de honor al mérito. e) Certificado de espíritu institucional. f) Certificado de espíritu deportivo. g) Certificados de conducta. h) Permisos especiales.","palabras_clave":["incentivos","recompensas","premios","felicitacion","jerarquia","certificado"]},
+      {"id":43,"numero":"Artículo 43","capitulo_num":5,"capitulo":"Capítulo V: Mérito y Demérito","seccion":"DEL DEMÉRITO DE LAS SANCIONES","titulo":"Definición de Sanción y Demérito","texto":"Las sanciones son correctivos disciplinarios impuestos por la autoridad competente a la o el estudiante que haya cometido faltas. Los puntos disminuidos se denominan demérito.","palabras_clave":["sanciones","correctivos","demerito","descuento puntos"]},
+      {"id":44,"numero":"Artículo 44","capitulo_num":5,"capitulo":"Capítulo V: Mérito y Demérito","seccion":"DEL DEMÉRITO DE LAS SANCIONES","titulo":"Disminución de Puntos","texto":"Los puntos otorgados disminuirán de acuerdo a los correctivos disciplinarios que se apliquen a cada estudiante en particular; esta disminución se denominará demérito.","palabras_clave":["disminucion","puntos","demerito","correctivos"]},
+      {"id":45,"numero":"Artículo 45","capitulo_num":5,"capitulo":"Capítulo V: Mérito y Demérito","seccion":"DEL DEMÉRITO DE LAS SANCIONES","titulo":"Definición de Correctivo","texto":"Se denominará correctivo disciplinario a la acción disciplinaria que ejerce el superior sobre el subalterno ante la comisión de faltas de carácter leve y grave, conforme a lo contemplado en las presentes Normas.","palabras_clave":["correctivo disciplinario","faltas leves","faltas graves","superior"]},
+      {"id":49,"numero":"Artículo 49","capitulo_num":5,"capitulo":"Capítulo V: Mérito y Demérito","seccion":"CALIFICACIÓN FINAL","titulo":"Calificación Final Anual","texto":"Para determinar la calificación final durante un año de formación, se tomará en cuenta la evaluación del desempeño, la cual tendrá un valor de treinta por ciento (30%), el porcentaje restante de setenta por ciento (70%) lo constituirá el promedio académico alcanzado.","palabras_clave":["calificacion final","30%","70%","promedio academico","evaluacion desempeño"]},
+      {"id":54,"numero":"Artículo 54","capitulo_num":5,"capitulo":"Capítulo V: Mérito y Demérito","seccion":"IMPOSICIÓN DE SANCIONES","titulo":"Deber de Reportar Faltas","texto":"Toda autoridad o superior jerárquico que observe la comisión de una falta, está en el deber de tomar acciones para que cese la misma, debiendo reportar dicha falta de inmediato al Consejo Disciplinario para que se inicie la averiguación.","palabras_clave":["reportar","faltas","consejo disciplinario","autoridad"]},
+      {"id":55,"numero":"Artículo 55","capitulo_num":5,"capitulo":"Capítulo V: Mérito y Demérito","seccion":"IMPOSICIÓN DE SANCIONES","titulo":"Constancia de Sanciones","texto":"De la imposición de toda sanción se dejará constancia por escrito en el historial personal de la o el estudiante, la aplicación de las medidas por la comisión de alguna de las faltas estipuladas.","palabras_clave":["constancia","sanciones","historial","por escrito"]},
+      {"id":56,"numero":"Artículo 56","capitulo_num":5,"capitulo":"Capítulo V: Mérito y Demérito","seccion":"RESTRICCIÓN DE PERMISO","titulo":"Restricción y Suspensión de Permisos","texto":"La jefa o jefe de las y los oficiales de planta evaluará los puntos de demérito a cada sanción impuesta a las y los estudiantes, diaria y/o semanalmente y en base a estos resultados se aplicará la restricción y suspensión del permiso, de acuerdo a la forma de permanencia (interna/semi-interna).","palabras_clave":["restriccion","suspension","permiso","demerito","interna","semi interna"]},
+      {"id":57,"numero":"Artículo 57","capitulo_num":6,"capitulo":"Capítulo VI: Orden de Mérito","seccion":"DEL ORDEN DE MÉRITO","titulo":"Definición de Orden de Mérito","texto":"El orden de mérito alude a la posición de eficiencia ocupada por la o el estudiante en cada trayecto de su proceso formativo, computando la sumatoria de los puntos acumulados.","palabras_clave":["orden de merito","posicion","eficiencia","promedio"]},
+      {"id":58,"numero":"Artículo 58","capitulo_num":6,"capitulo":"Capítulo VI: Orden de Mérito","seccion":"DEL ORDEN DE MÉRITO","titulo":"Renglones Evaluados","texto":"Los renglones a evaluar son: Rendimiento Académico, Reconocimientos e Incentivos, Responsabilidad y Conducta, Disposición al Servicio, Ética, Participación en Eventos Culturales y Deportivos, y Obtención de Jerarquías.","palabras_clave":["renglones","rendimiento academico","conducta","etica","deportes","jerarquias"]},
+      {"id":59,"numero":"Artículo 59","capitulo_num":7,"capitulo":"Capítulo VII: Uso Correcto del Uniforme, Prendas y Dotaciones","seccion":"DEL USO DE LOS UNIFORMES","titulo":"Uso Obligatorio del Uniforme","texto":"Las y los estudiantes no profesionales que cursen trayecto inicial, I y II deben hacer uso en todo momento del uniforme reglamentario e implementos de identificación durante actividades académicas o vinculación social.","palabras_clave":["uniforme","obligatorio","reglamentario","identificacion"]},
+      {"id":60,"numero":"Artículo 60","capitulo_num":7,"capitulo":"Capítulo VII: Uso Correcto del Uniforme, Prendas y Dotaciones","seccion":"DEL USO DE LOS UNIFORMES","titulo":"Carácter Personal e Intransferible","texto":"El uso de los uniformes es personal e intransferible, fundamentado en preservar la imagen institucional. Prohibido prestar o donar prendas a terceros.","palabras_clave":["personal","intransferible","uniforme","prestar","imagen"]},
+      {"id":61,"numero":"Artículo 61","capitulo_num":7,"capitulo":"Capítulo VII: Uso Correcto del Uniforme, Prendas y Dotaciones","seccion":"DEL USO DE LOS UNIFORMES","titulo":"Mantenimiento de Prendas y Equipos","texto":"Las y los estudiantes deberán mantener en buen estado, evitando en todo momento dañar las prendas, equipos y materiales proporcionados para el desarrollo de las actividades académicas.","palabras_clave":["mantenimiento","prendas","equipos","buen estado"]},
+      {"id":62,"numero":"Artículo 62","capitulo_num":7,"capitulo":"Capítulo VII: Uso Correcto del Uniforme, Prendas y Dotaciones","seccion":"DEL USO DE LOS UNIFORMES","titulo":"Comportamiento con el Uniforme","texto":"Al hacer uso del uniforme, deberán mantener un comportamiento respetuoso, honorable, cabal y disciplinado como muestra del espíritu de la UNES.","palabras_clave":["comportamiento","honor","respeto","uniforme"]},
+      {"id":63,"numero":"Artículo 63","capitulo_num":7,"capitulo":"Capítulo VII: Uso Correcto del Uniforme, Prendas y Dotaciones","seccion":"DEL USO DE LOS UNIFORMES","titulo":"Uniformes Reglamentarios","texto":"Los uniformes que identifican a las y los estudiantes son los que están establecidos en el Reglamento para su uso correcto, como lo son las prendas y dotaciones de la UNES.","palabras_clave":["uniformes reglamentarios","prendas","dotaciones"]},
+      {"id":64,"numero":"Artículo 64","capitulo_num":7,"capitulo":"Capítulo VII: Uso Correcto del Uniforme, Prendas y Dotaciones","seccion":"DEL USO DE LOS UNIFORMES","titulo":"Uso del Carnet","texto":"Usarán en todo momento el carnet expedido por la UNES de forma visible a nivel del tórax (lado izquierdo). En caso de pérdida, extravío o deterioro debe reponerlo previa denuncia.","palabras_clave":["carnet","torax","izquierdo","visible","credencial","reponer"]},
+      {"id":65,"numero":"Artículo 65","capitulo_num":7,"capitulo":"Capítulo VII: Uso Correcto del Uniforme, Prendas y Dotaciones","seccion":"DEL USO DE LOS UNIFORMES","titulo":"Personalización de Prendas","texto":"Las y los estudiantes al recibir las dotaciones deberán personalizar cada prenda de manera discreta, en un lugar no visible. Dicha dotación se hará mediante acta suscrita entre la o el estudiante y la Directora o Director del Centro de Formación.","palabras_clave":["personalizacion","prendas","dotacion","acta"]},
+      {"id":66,"numero":"Artículo 66","capitulo_num":7,"capitulo":"Capítulo VII: Uso Correcto del Uniforme, Prendas y Dotaciones","seccion":"DEL USO DE LOS UNIFORMES","titulo":"Devolución de Prendas","texto":"Las y los estudiantes al momento de su retiro o por culminación académica, deberán entregar todas las prendas y materiales dotados por la UNES, mediante un acta de entrega, especificando cantidad y estado.","palabras_clave":["devolucion","prendas","retiro","culminacion","acta entrega"]},
+      {"id":67,"numero":"Artículo 67","capitulo_num":7,"capitulo":"Capítulo VII: Uso Correcto del Uniforme, Prendas y Dotaciones","seccion":"DEL USO DE LOS UNIFORMES","titulo":"Incumplimiento como Falta Leve","texto":"El incumplimiento a las disposiciones contenidas en el presente capítulo, serán consideradas como la aplicación de una falta leve que corresponde con lo establecido en las presentes Normas.","palabras_clave":["incumplimiento","falta leve","uniforme"]},
+      {"id":68,"numero":"Artículo 68","capitulo_num":8,"capitulo":"Capítulo VIII: Representación Estudiantil","seccion":"REPRESENTACIÓN ESTUDIANTIL","titulo":"Jerarquías Estudiantiles","texto":"La representación de las y los estudiantes no profesionales se clasifica: En Trayecto I: Jefe de Escuadra, Delegado, Delegado Jefe, Distinguido. En Trayecto II: Distinguido Mayor. En Trayecto III: Primer Delegado. En Trayecto IV: Primer Brigadier y Brigadier Mayor.","palabras_clave":["jerarquias","jefe de escuadra","delegado","distinguido","brigadier mayor","representacion"]},
+      {"id":74,"numero":"Artículo 74","capitulo_num":8,"capitulo":"Capítulo VIII: Representación Estudiantil","seccion":"DEL CONSEJO ESTUDIANTIL","titulo":"El Consejo Estudiantil","texto":"Es la instancia de participación de las y los estudiantes representada por el Brigadier Mayor y Primer Brigadier para presentar opiniones y propuestas de mejora ante el Consejo Directivo.","palabras_clave":["consejo estudiantil","participacion","propuestas","mejora"]},
+      {"id":78,"numero":"Artículo 78","capitulo_num":9,"capitulo":"Capítulo IX: Supervisión, Responsabilidades y Régimen Disciplinario","seccion":"SUPERVISIÓN CONTINUA","titulo":"Sistema de Supervisión Continua","texto":"La UNES desarrollará un sistema de supervisión continua y regular a las y los estudiantes para realizar seguimiento y acompañamiento en el cumplimiento de deberes.","palabras_clave":["supervision continua","seguimiento","acompañamiento"]},
+      {"id":85,"numero":"Artículo 85","capitulo_num":9,"capitulo":"Capítulo IX: Supervisión, Responsabilidades y Régimen Disciplinario","seccion":"DE LAS FALTAS","titulo":"Definición de Faltas","texto":"Se consideran como faltas toda acción u omisión, voluntaria o no, contraria a los deberes establecidos en las presentes Normas de Convivencia y Régimen Disciplinario, así como en las leyes, órdenes e instrucciones impartidas.","palabras_clave":["faltas","definicion","accion","omision","deberes"]},
+      {"id":89,"numero":"Artículo 89","capitulo_num":9,"capitulo":"Capítulo IX: Supervisión, Responsabilidades y Régimen Disciplinario","seccion":"CLASIFICACIÓN DE LAS FALTAS","titulo":"Clasificación de Faltas","texto":"Las faltas a la disciplina se clasifican según la naturaleza del hecho cometido en: 1. Faltas Leves (Art. 90). 2. Faltas Graves (Art. 91). 3. Faltas Gravísimas (Art. 92).","palabras_clave":["clasificacion faltas","leves","graves","gravisimas","tipos de faltas"]},
+      {"id":90,"numero":"Artículo 90","capitulo_num":9,"capitulo":"Capítulo IX: Supervisión, Responsabilidades y Régimen Disciplinario","seccion":"FALTAS LEVES","titulo":"Faltas Leves (15 Puntos de Demérito)","texto":"Se consideran faltas leves todo comportamiento que por su índole afecta indirectamente a otros o a bienes. Ponderación: 15 PUNTOS DE DEMÉRITO. Ejemplos: 1. Incumplir normas de servicios estudiantiles. 2. Trasladar mobiliario sin autorización. 4. No prestar debida atención a docentes. 5. Ingerir alimentos en clase. 10. Dirigirse incorrectamente a un superior. 12. Llegar retardado sin causa justificada. 29. Venta o consumo de golosinas en el aula. 30. Cambiarse el uniforme en lugares no permitidos.","palabras_clave":["faltas leves","falta leve","15 puntos","demerito","retardos","llegar tarde","comer en clase","descuido","atencion","golosinas"]},
+      {"id":91,"numero":"Artículo 91","capitulo_num":9,"capitulo":"Capítulo IX: Supervisión, Responsabilidades y Régimen Disciplinario","seccion":"FALTAS GRAVES","titulo":"Faltas Graves (30 Puntos de Demérito)","texto":"Se considera falta grave todo comportamiento que afecta significativamente a la Universidad o sus miembros. Ponderación: 30 PUNTOS DE DEMÉRITO. Ejemplos: 1. Inasistencias injustificadas. 3. Usar celulares durante clases sin autorización. 8. Incumplir con el uso correcto del uniforme. 9. Negligencia en el cumplimiento de orden legítima. 10. Causar daños mayores a bienes. 14. Ofender o provocar a autoridad o compañero. 15. Simular enfermedad. 28. Dar muestras de insubordinación.","palabras_clave":["faltas graves","falta grave","30 puntos","demerito","inasistencia","celulares en clase","tecnologia","insubordinacion","daños mayores","simular enfermedad","ofender superior"]},
+      {"id":92,"numero":"Artículo 92","capitulo_num":9,"capitulo":"Capítulo IX: Supervisión, Responsabilidades y Régimen Disciplinario","seccion":"FALTAS GRAVÍSIMAS","titulo":"Faltas Gravísimas","texto":"Son faltas gravísimas cualquier acto que atente contra los Derechos Humanos, la integridad física o moral, o constituya delito. Conllevan RETIRO INMEDIATO (EXPULSIÓN). Ejemplos: 2. Presentarse bajo efectos de alcohol o drogas. 4. Realizar actos lascivos o sexuales. 8. Copiarse, cometer plagio o fraude. 12. Portar o introducir armas. 21. Acoso u hostigamiento sexual. 26. Agredir físicamente a alguien. 44. Suplantación de identidad.","palabras_clave":["faltas gravisimas","falta gravisima","expulsion","retiro inmediato","alcohol","drogas","armas","copiarse","plagio","fraude","examen","agresion fisica","pelea","acoso sexual","suplantacion"]},
+      {"id":93,"numero":"Artículo 93","capitulo_num":9,"capitulo":"Capítulo IX: Supervisión, Responsabilidades y Régimen Disciplinario","seccion":"CLASIFICACIÓN DE SANCIONES","titulo":"Clasificación de Sanciones","texto":"1. FALTAS LEVES: Programas cortos de supervisión intensiva (Art. 94). 2. FALTAS GRAVES: Programas de supervisión intensiva (Art. 95). 3. FALTAS GRAVÍSIMAS: Medida de Retiro Inmediato recomendado por el Consejo Disciplinario (Art. 96).","palabras_clave":["sanciones","sancion","correctivos","medidas","supervision intensiva","retiro"]},
+      {"id":94,"numero":"Artículo 94","capitulo_num":9,"capitulo":"Capítulo IX: Supervisión, Responsabilidades y Régimen Disciplinario","seccion":"SANCIONES FALTAS LEVES","titulo":"Sanciones por Faltas Leves","texto":"Consistirán en: 1. Amonestación verbal. 2. Trabajo escrito breve y exposición oral. 3. Práctica intensiva de media (1/2) hora. 4. Tareas académicas o de campo. 5. Restricción de permiso ordinario hasta por 15 días.","palabras_clave":["sancion leve","amonestacion verbal","trabajo escrito","practica intensiva","media hora","restriccion permiso","15 dias"]},
+      {"id":95,"numero":"Artículo 95","capitulo_num":9,"capitulo":"Capítulo IX: Supervisión, Responsabilidades y Régimen Disciplinario","seccion":"SANCIONES FALTAS GRAVES","titulo":"Sanciones por Faltas Graves","texto":"Consistirán en: 1. Amonestación escrita en expediente. 2. Trabajo escrito breve y exposición oral. 3. Reentrenamiento de una (1) hora. 4. Labores de mantenimiento. 5. Suspensión de permiso ordinario hasta por un mes. 6. Suspensión o anulación de jerarquía.","palabras_clave":["sancion grave","amonestacion escrita","reentrenamiento","mantenimiento","suspension permiso","un mes","jerarquia"]},
+      {"id":96,"numero":"Artículo 96","capitulo_num":9,"capitulo":"Capítulo IX: Supervisión, Responsabilidades y Régimen Disciplinario","seccion":"SANCIONES FALTAS GRAVÍSIMAS","titulo":"Sanción por Faltas Gravísimas","texto":"El Consejo Disciplinario recomendará la aplicación de la Medida de Retiro Inmediato de la Universidad (Expulsión definitiva del discente).","palabras_clave":["sancion gravisima","retiro inmediato","expulsion","desincorporacion"]},
+      {"id":97,"numero":"Artículo 97","capitulo_num":9,"capitulo":"Capítulo IX: Supervisión, Responsabilidades y Régimen Disciplinario","seccion":"CAUSALES DE RETIRO","titulo":"Causales de Retiro","texto":"El retiro procederá en: 1. Renuncia escrita. 2. Renuncia o pérdida de la nacionalidad. 3. Enfermedad o discapacidad acreditada. 4. Interdicción civil. 5. Registro policial o antecedentes penales. 6. Fallecimiento. 7. Bajo rendimiento académico. 8. Fuera del país sin autorización. 9. Decisión del Consejo Disciplinario.","palabras_clave":["causales","retiro","renuncia","enfermedad","interdiccion","fallecimiento","bajo rendimiento","consejo disciplinario"]},
+      {"id":101,"numero":"Artículo 101","capitulo_num":10,"capitulo":"Capítulo X: De los Sujetos","seccion":"CONSEJO DISCIPLINARIO","titulo":"Integrantes del Consejo Disciplinario","texto":"El Consejo Disciplinario está integrado por: 1. Secretaria/o de Consejo. 2. Coordinador de Control de Estudios. 3. Coordinador Académico. 4. Coordinador de Vinculación Social. 5. Coordinador Administrativo. 6. Delegado de Consultoría Jurídica. 7. Representante PNF. 8. Jefe UNACIES. 9. Oficiales de Planta.","palabras_clave":["consejo disciplinario","integrantes","quienes forman","secretario","juridica"]},
+      {"id":105,"numero":"Artículo 105","capitulo_num":10,"capitulo":"Capítulo X: De los Sujetos","seccion":"PROCEDIMIENTO DISCIPLINARIO","titulo":"Inicio del Procedimiento","texto":"El procedimiento disciplinario por faltas gravísimas se inicia mediante denuncia oral, escrita o de oficio ante el Consejo Disciplinario dentro de los 3 días hábiles siguientes. Se investigará dentro de 5 días hábiles notificando al Director.","palabras_clave":["procedimiento","denuncia","investigacion","notificacion","tres dias"]},
+      {"id":122,"numero":"Artículo 122","capitulo_num":10,"capitulo":"Capítulo X: De los Sujetos","seccion":"RECURSO DE RECONSIDERACIÓN","titulo":"Derecho a Reconsideración","texto":"Cuando un estudiante sea retirado se le notificará por escrito. Podrá ejercer Recurso de Reconsideración ante el Director del Centro dentro de los tres (3) días hábiles siguientes a la notificación.","palabras_clave":["recurso","reconsideracion","apelar","apelacion","director","tres dias"]},
+      {"id":133,"numero":"Artículo 133","capitulo_num":10,"capitulo":"Capítulo X: De los Sujetos","seccion":"CONSEJO DE APELACIONES","titulo":"Consejo de Apelaciones","texto":"Instancia colegiada superior encargada de resolver en última instancia los recursos jerárquicos interpuestos por los estudiantes en materia disciplinaria.","palabras_clave":["consejo de apelaciones","ultima instancia","recurso jerarquico"]},
+      {"id":135,"numero":"Artículo 135","capitulo_num":11,"capitulo":"Capítulo XI: Disposiciones Finales","seccion":"DISPOSICIONES FINALES","titulo":"Duda en la Interpretación","texto":"En caso de surgir dudas razonables en la interpretación o aplicación de las presentes normas, se optará siempre por la interpretación que más beneficie a las y los estudiantes.","palabras_clave":["duda","interpretacion","beneficie al estudiante","in dubio pro discente"]},
+      {"id":137,"numero":"Artículo 137","capitulo_num":11,"capitulo":"Capítulo XI: Disposiciones Finales","seccion":"DISPOSICIONES FINALES","titulo":"Obligatoriedad del Conocimiento","texto":"El desconocimiento por parte de las y los estudiantes de las presentes Normas de Convivencia y Régimen Disciplinario no los exime de su observancia, cumplimiento y responsabilidades.","palabras_clave":["desconocimiento","saber","no exime","obligatorio"]},
+      {"id":141,"numero":"Artículo 141","capitulo_num":11,"capitulo":"Capítulo XI: Disposiciones Finales","seccion":"DISPOSICIÓN DEROGATORIA","titulo":"Derogatoria de Normas Anteriores","texto":"Se deroga el texto íntegro de las Normas de Convivencia aprobadas en el Acuerdo N° 00270 del 18 de octubre de 2023. El presente acuerdo entra en vigencia a partir del 18 de julio de 2024.","palabras_clave":["derogatoria","acuerdo 0000692","18 de julio 2024","vigencia"]}
+    ];
+
+    // ============================================================
+    // LÓGICA
+    // ============================================================
+    let currentChapter = "all";
+    let searchQuery = "";
+    let selectedArticleForAsk = null;
+
+    document.addEventListener("DOMContentLoaded", () => {
+        console.log(`✅ ${NORMAS_DATA_INLINE.length} artículos cargados`);
+        renderArticles();
+        setupEventListeners();
+        updateWelcomeTime();
+    });
+
+    function renderArticles() {
+        const grid = document.getElementById("articles-grid");
+        const count = document.getElementById("articles-count");
+        if (!grid) return;
+        grid.innerHTML = "";
+
+        const filtered = NORMAS_DATA_INLINE.filter(art => {
+            const matchesChapter = currentChapter === "all" || art.capitulo_num === parseInt(currentChapter);
+            const q = normalizeText(searchQuery);
+            const matchesSearch = q === "" ||
+                normalizeText(art.numero).includes(q) ||
+                normalizeText(art.titulo).includes(q) ||
+                normalizeText(art.texto).includes(q) ||
+                (art.palabras_clave && art.palabras_clave.some(kw => normalizeText(kw).includes(q)));
+            return matchesChapter && matchesSearch;
+        });
+
+        if (count) count.textContent = `${filtered.length} ${filtered.length === 1 ? 'artículo' : 'artículos'}`;
+
+        if (filtered.length === 0) {
+            grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:40px;background:#FFF;border-radius:16px;border:1px dashed #CBD5E1;">
+                <span class="material-symbols-outlined" style="font-size:48px;color:#94A3B8;">search_off</span>
+                <h3 style="margin-top:12px;color:#0A2A5C;">No se encontraron artículos</h3></div>`;
+            return;
+        }
+
+        filtered.forEach(art => {
+            const card = document.createElement("div");
+            card.className = "article-card";
+            card.innerHTML = `
+                <div class="card-top">
+                    <span class="category-tag">${art.capitulo.split(':')[0]} • ${art.seccion || 'Reglamento'}</span>
+                    <h3>${art.numero}: ${art.titulo}</h3>
+                    <p>${art.texto}</p>
+                </div>
+                <div class="card-bottom">
+                    <button class="btn-link read-more-btn" data-id="${art.id}">
+                        Leer completo <span class="material-symbols-outlined">arrow_forward</span>
+                    </button>
+                </div>`;
+            grid.appendChild(card);
+        });
+
+        document.querySelectorAll(".read-more-btn").forEach(btn => {
+            btn.addEventListener("click", (e) => {
+                openModal(parseInt(e.currentTarget.getAttribute("data-id")));
+            });
+        });
+    }
+
+    function setupEventListeners() {
+        const searchInput = document.getElementById("search-input");
+        const clearSearchBtn = document.getElementById("clear-search");
+        const chaptersNav = document.getElementById("chapters-nav");
+        const currentSectionTitle = document.getElementById("current-section-title");
+
+        if (searchInput) {
+            searchInput.addEventListener("input", (e) => {
+                searchQuery = e.target.value;
+                if (clearSearchBtn) clearSearchBtn.style.display = searchQuery.trim() !== "" ? "flex" : "none";
+                renderArticles();
+            });
+        }
+        if (clearSearchBtn) {
+            clearSearchBtn.addEventListener("click", () => {
+                if (searchInput) searchInput.value = "";
+                searchQuery = "";
+                clearSearchBtn.style.display = "none";
+                renderArticles();
+            });
+        }
+        if (chaptersNav) {
+            chaptersNav.addEventListener("click", (e) => {
+                const btn = e.target.closest(".chapter-btn");
+                if (!btn) return;
+                document.querySelectorAll(".chapter-btn").forEach(b => b.classList.remove("active"));
+                btn.classList.add("active");
+                currentChapter = btn.getAttribute("data-cap");
+                if (currentSectionTitle) {
+                    currentSectionTitle.textContent = currentChapter === "all"
+                        ? "Artículos de las Normas de Convivencia"
+                        : btn.textContent.trim();
+                }
+                renderArticles();
+            });
+        }
+
+        const closeModalBtn = document.getElementById("close-modal");
+        const modal = document.getElementById("article-modal");
+        if (closeModalBtn) closeModalBtn.addEventListener("click", closeModal);
+        if (modal) modal.addEventListener("click", (e) => { if (e.target === modal) closeModal(); });
+
+        const askBtn = document.getElementById("modal-ask-btn");
+        if (askBtn) askBtn.addEventListener("click", () => {
+            if (selectedArticleForAsk) {
+                const q = `¿Qué dice el ${selectedArticleForAsk.numero}?`;
+                closeModal();
+                openChat();
+                handleUserMessage(q);
+            }
+        });
+
+        const trigger = document.getElementById("avatar-trigger");
+        if (trigger) trigger.addEventListener("click", () => {
+            const w = document.getElementById("chat-widget");
+            if (!w.style.display || w.style.display === "none") openChat();
+            else closeChat();
+        });
+
+        const closeChatBtn = document.getElementById("close-chat");
+        if (closeChatBtn) closeChatBtn.addEventListener("click", closeChat);
+
+        const form = document.getElementById("chat-form");
+        if (form) form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const input = document.getElementById("chat-input");
+            const text = input.value.trim();
+            if (!text) return;
+            input.value = "";
+            handleUserMessage(text);
+        });
+
+        const msgs = document.getElementById("chat-messages");
+        if (msgs) msgs.addEventListener("click", (e) => {
+            const btn = e.target.closest(".suggest-btn");
+            if (btn) handleUserMessage(btn.getAttribute("data-query"));
+        });
+    }
+
+    function openModal(id) {
+        const art = NORMAS_DATA_INLINE.find(a => a.id === id);
+        if (!art) return;
+        selectedArticleForAsk = art;
+        const mc = document.getElementById("modal-category");
+        const mt = document.getElementById("modal-title");
+        const mcont = document.getElementById("modal-content");
+        const mk = document.getElementById("modal-keywords");
+        if (mc) mc.textContent = art.capitulo;
+        if (mt) mt.textContent = `${art.numero}: ${art.titulo}`;
+        if (mcont) mcont.innerHTML = (art.texto || "").replace(/\n/g, "<br>");
+        if (mk) {
+            mk.innerHTML = "";
+            (art.palabras_clave || []).forEach(kw => {
+                const tag = document.createElement("span");
+                tag.className = "keyword-tag";
+                tag.textContent = kw;
+                mk.appendChild(tag);
+            });
+        }
+        const modal = document.getElementById("article-modal");
+        if (modal) modal.style.display = "flex";
+    }
+
+    function closeModal() {
+        const modal = document.getElementById("article-modal");
+        if (modal) modal.style.display = "none";
+        selectedArticleForAsk = null;
+    }
+
+    function openChat() {
+        const w = document.getElementById("chat-widget");
+        const b = document.getElementById("avatar-bubble");
+        const n = document.getElementById("notif-badge");
+        if (w) w.style.display = "flex";
+        if (b) b.style.display = "none";
+        if (n) n.style.display = "none";
+    }
+
+    function closeChat() {
+        const w = document.getElementById("chat-widget");
+        if (w) w.style.display = "none";
+    }
+
+    function updateWelcomeTime() {
+        const wt = document.getElementById("welcome-time");
+        if (wt) wt.textContent = formatTime(new Date());
+    }
+
+    function formatTime(d) {
+        let h = d.getHours(), m = d.getMinutes();
+        const ap = h >= 12 ? 'PM' : 'AM';
+        h = h % 12 || 12;
+        m = m < 10 ? '0' + m : m;
+        return `${h}:${m} ${ap}`;
+    }
+
+    function normalizeText(t) {
+        if (!t) return "";
+        return t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+            .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()?¿¡"']/g, "");
+    }
+
+    function handleUserMessage(text) {
+        const s = document.getElementById("chat-suggestions");
+        if (s) s.remove();
+        appendMessage(text, "user");
+        const ti = document.getElementById("typing-indicator");
+        if (ti) ti.style.display = "flex";
+        setTimeout(() => {
+            if (ti) ti.style.display = "none";
+            const r = localChatEngine(text);
+            appendMessage(r.reply, "assistant", r.article, r.fallback);
+        }, 700);
+    }
+
+    function appendMessage(text, sender, article, fallback) {
+        const cont = document.getElementById("chat-messages");
+        if (!cont) return;
+        const div = document.createElement("div");
+        div.className = `message ${sender}`;
+        let html = `<div class="message-bubble">${(text || "").replace(/\n/g, "<br>")}`;
+        if (article) {
+            html += `<div class="chat-action-box"><button class="btn-chat-action secondary-btn read-article-chat-btn" data-id="${article.id}"><span class="material-symbols-outlined">menu_book</span> Leer ${article.numero}</button></div>`;
+        }
+        html += `</div><span class="message-time">${formatTime(new Date())}</span>`;
+        div.innerHTML = html;
+        cont.appendChild(div);
+        cont.scrollTop = cont.scrollHeight;
+        const btn = div.querySelector(".read-article-chat-btn");
+        if (btn) btn.addEventListener("click", (e) => openModal(parseInt(e.currentTarget.getAttribute("data-id"))));
+    }
+
+    function localChatEngine(query) {
+        const q = normalizeText(query);
+        if (["hola","buenas","saludos","unesito"].some(g => q.includes(g))) {
+            return { reply: "¡Hola! Soy **Unesito**, tu asistente virtual. ¿Sobre qué tema necesitas orientación?", mood: "smile" };
+        }
+        const artMatch = q.match(/(?:articulo|art|articul)\s*(\d+)/);
+        if (artMatch) {
+            const num = parseInt(artMatch[1]);
+            const t = NORMAS_DATA_INLINE.find(n => n.id === num);
+            if (t) return { reply: `Según el **${t.numero}** del **${t.capitulo}**:\n\n"${t.texto}"`, article: t, mood: "smile" };
+        }
+        let best = null, maxM = 0;
+        const words = q.split(/\s+/).filter(w => w.length > 2);
+        NORMAS_DATA_INLINE.forEach(art => {
+            let m = 0;
+            (art.palabras_clave || []).forEach(kw => { if (q.includes(normalizeText(kw))) m += 2.5; });
+            words.forEach(w => {
+                if (normalizeText(art.titulo).includes(w)) m += 1.5;
+                if (normalizeText(art.texto).includes(w)) m += 0.5;
+            });
+            if (m > maxM) { maxM = m; best = art; }
+        });
+        if (best && maxM >= 2) {
+            return { reply: `Según el **${best.numero}** (**${best.capitulo}**):\n\n"${best.texto}"`, article: best, mood: "smile" };
+        }
+        return { reply: "No encontré información exacta. ¿Puedes reformular tu pregunta?\n\nEjemplo: *'¿Cuáles son las faltas leves?'* o *'artículo 90'*", mood: "sad" };
+    }
+    </script>
+
 </body>
 </html>
