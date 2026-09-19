@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unesito - Normas de Convivencia UNES (Acuerdo N°0000692)</title>
+    <!-- Google Fonts: Outfit (Titulares) e Inter (Cuerpo) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Google Material Symbols -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Fondo decorativo con colores institucionales (Azul #0A2A5C y Dorado #C9A227) -->
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+
+    <div class="app-container">
+        <!-- Encabezado Principal -->
+        <header class="main-header">
+            <div class="logo-area">
+                <div class="logo-shield">
+                    <img src="unes.png" alt="Logo UNES" class="logo-unes-img">
+                </div>
+                <div class="logo-text">
+                    <h1>Unesito</h1>
+                    <p>Normas de Convivencia y Régimen Disciplinario UNES (Acuerdo N°0000692)</p>
+                </div>
+            </div>
+
+            <!-- Buscador Global -->
+            <div class="search-filter-bar">
+                <div class="search-box">
+                    <span class="material-symbols-outlined search-icon">search</span>
+                    <input type="text" id="search-input" placeholder="Buscar por número de artículo, palabra clave o tema...">
+                    <button id="clear-search" class="clear-btn" style="display:none;">
+                        <span class="material-symbols-outlined">close</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Banner de Bienvenida -->
+        <div class="welcome-banner">
+            <div class="banner-icon">
+                <span class="material-symbols-outlined">verified</span>
+            </div>
+            <div class="banner-content">
+                <h2>Bienvenido a Unesito</h2>
+                <p>Consulta las Normas de Convivencia, Régimen Disciplinario, Derechos, Deberes y más aprobados en la Reforma del 18 de julio de 2024.</p>
+            </div>
+        </div>
+
+        <!-- Layout Principal: 11 Capítulos (Acordeón) + Grilla de Artículos -->
+        <div class="main-layout">
+            <!-- Menú Lateral de Capítulos (11 Capítulos) -->
+            <aside class="sidebar-chapters">
+                <div class="sidebar-header">
+                    <h3><span class="material-symbols-outlined">menu_book</span> Capítulos del Reglamento</h3>
+                </div>
+                <nav class="chapters-nav" id="chapters-nav">
+                    <button class="chapter-btn active" data-cap="all">
+                        <span class="cap-badge">Todos</span> Todos los Artículos (1-141)
+                    </button>
+                    <button class="chapter-btn" data-cap="1">
+                        <span class="cap-badge">Cap I</span> Objeto, ámbito y principios (Art. 1-4)
+                    </button>
+                    <button class="chapter-btn" data-cap="2">
+                        <span class="cap-badge">Cap II</span> De las autoridades (Art. 5-11)
+                    </button>
+                    <button class="chapter-btn" data-cap="3">
+                        <span class="cap-badge">Cap III</span> Permanencia, derechos y deberes (Art. 12-19)
+                    </button>
+                    <button class="chapter-btn" data-cap="4">
+                        <span class="cap-badge">Cap IV</span> Asistencias, permisos y reposos (Art. 20-27)
+                    </button>
+                    <button class="chapter-btn" data-cap="5">
+                        <span class="cap-badge">Cap V</span> Mérito y demérito (Art. 28-56)
+                    </button>
+                    <button class="chapter-btn" data-cap="6">
+                        <span class="cap-badge">Cap VI</span> Orden de mérito (Art. 57-58)
+                    </button>
+                    <button class="chapter-btn" data-cap="7">
+                        <span class="cap-badge">Cap VII</span> Uso del uniforme y dotaciones (Art. 59-67)
+                    </button>
+                    <button class="chapter-btn" data-cap="8">
+                        <span class="cap-badge">Cap VIII</span> Representación estudiantil (Art. 68-77)
+                    </button>
+                    <button class="chapter-btn" data-cap="9">
+                        <span class="cap-badge">Cap IX</span> Régimen disciplinario y faltas (Art. 78-100)
+                    </button>
+                    <button class="chapter-btn" data-cap="10">
+                        <span class="cap-badge">Cap X</span> De los sujetos y procedimientos (Art. 101-134)
+                    </button>
+                    <button class="chapter-btn" data-cap="11">
+                        <span class="cap-badge">Cap XI</span> Disposiciones finales (Art. 135-141)
+                    </button>
+                </nav>
+            </aside>
+
+            <!-- Sección Contenido de Artículos -->
+            <main class="main-content">
+                <div class="section-header">
+                    <h2 id="current-section-title">Artículos de las Normas de Convivencia</h2>
+                    <span class="badge" id="articles-count">0 artículos</span>
+                </div>
+
+                <div class="articles-grid" id="articles-grid">
+                    <div class="loading-state">
+                        <div class="spinner"></div>
+                        <p>Cargando artículos del Acuerdo N°0000692...</p>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- Pie de página descriptivo -->
+        <footer class="main-footer">
+            <p>© 2026 Universidad Nacional Experimental de la Seguridad (UNES). Todos los derechos reservados.</p>
+            <p class="footer-credit">Elaborado por el <strong>Vicerrectorado de Desarrollo Académico</strong></p>
+            <p class="footer-links">
+                <span>Asesoría Estudiantil: <a href="mailto:asesoriaestudianteunes@gmail.com">asesoriaestudianteunes@gmail.com</a></span>
+                <span class="separator">|</span>
+                <span><a href="https://forms.gle/9VAbMmq7XqdjMg6U6" target="_blank">Formulario de Asesorías</a></span>
+            </p>
+        </footer>
+    </div>
+
+    <!-- Modal para ver el Artículo Completo -->
+    <div class="modal-backdrop" id="article-modal" style="display: none;">
+        <div class="modal-card">
+            <div class="modal-header">
+                <div class="modal-title-area">
+                    <span class="modal-category-tag" id="modal-category">Capítulo</span>
+                    <h3 id="modal-title">Artículo X</h3>
+                </div>
+                <button class="modal-close-btn" id="close-modal">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-content-text" id="modal-content">
+                    Contenido del artículo...
+                </div>
+                <div class="modal-keywords-box">
+                    <strong>Palabras clave:</strong>
+                    <div class="keyword-tags" id="modal-keywords"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="modal-ask-btn">Preguntar sobre este artículo a Unesito</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CHATBOT FLOTANTE: "UNESITO" -->
+    <div class="assistant-container" id="assistant-container">
+        <!-- Globo de diálogo inicial del avatar -->
+        <div class="avatar-bubble" id="avatar-bubble">
+            <div class="bubble-text">¡Hola! Soy <strong>Unesito</strong>. Pregúntame sobre cualquier norma de convivencia de la UNES. 👮‍♂️👋</div>
+            <div class="bubble-arrow"></div>
+        </div>
+
+        <!-- Botón del Avatar Flotante -->
+        <button class="avatar-trigger-btn" id="avatar-trigger" aria-label="Abrir chatbot Unesito">
+            <svg viewBox="0 0 100 100" class="unesito-svg">
+                <ellipse cx="50" cy="88" rx="25" ry="5" fill="rgba(0,0,0,0.15)" />
+                <path d="M30 75 C30 65, 70 65, 70 75 L65 85 L35 85 Z" fill="#0A2A5C" />
+                <path d="M45 70 L50 78 L55 70 Z" fill="#C9A227" />
+                <path d="M48 70 L50 73 L52 70 Z" fill="#FFF" />
+                <rect x="28" y="32" width="44" height="38" rx="18" fill="url(#head-grad)" stroke="#0A2A5C" stroke-width="2"/>
+                <path d="M24 34 C30 20, 70 20, 76 34 Z" fill="#0A2A5C" />
+                <path d="M22 33 C26 31, 74 31, 78 33 L80 37 C80 37, 50 34, 20 37 Z" fill="#111" />
+                <circle cx="50" cy="27" r="5" fill="#C9A227" />
+                <path d="M48 27 L50 25 L52 27 L50 29 Z" fill="#0A2A5C" />
+                <rect x="23" y="42" width="6" height="15" rx="3" fill="#C9A227" />
+                <rect x="71" y="42" width="6" height="15" rx="3" fill="#C9A227" />
+                <rect x="34" y="42" width="32" height="16" rx="8" fill="#121824" />
+                <g class="avatar-eyes">
+                    <ellipse cx="43" cy="50" rx="4" ry="4" fill="#00E5FF" class="eye-left" />
+                    <ellipse cx="57" cy="50" rx="4" ry="4" fill="#00E5FF" class="eye-right" />
+                </g>
+                <path d="M46 54 Q50 58 54 54" fill="none" stroke="#00E5FF" stroke-width="2" stroke-linecap="round" id="avatar-mouth" />
+                <circle cx="81" cy="42" r="2.5" fill="#00E5FF" class="antenna-light" />
+                <defs>
+                    <linearGradient id="head-grad" x1="28" y1="32" x2="72" y2="70" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#FFFFFF"/>
+                        <stop offset="0.7" stop-color="#E1E8F0"/>
+                        <stop offset="1" stop-color="#C2D1E0"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+            <span class="notification-badge" id="notif-badge">1</span>
+        </button>
+
+        <!-- Ventana del Chat Widget -->
+        <div class="chat-widget" id="chat-widget" style="display: none;">
+            <div class="chat-header">
+                <div class="chat-avatar-mini">
+                    <svg viewBox="0 0 100 100" width="32" height="32">
+                        <circle cx="50" cy="50" r="45" fill="#0A2A5C"/>
+                        <rect x="32" y="36" width="36" height="32" rx="10" fill="#E1E8F0" />
+                        <path d="M28 36 C35 25, 65 25, 72 36 Z" fill="#0A2A5C" />
+                        <rect x="38" y="44" width="24" height="12" rx="6" fill="#121824" />
+                        <circle cx="44" cy="50" r="2.5" fill="#00E5FF" />
+                        <circle cx="56" cy="50" r="2.5" fill="#00E5FF" />
+                    </svg>
+                </div>
+                <div class="chat-title-info">
+                    <h4>Asistente Unesito</h4>
+                    <span class="online-indicator"><span class="dot"></span> En línea (Acuerdo N°0000692)</span>
+                </div>
+                <button class="chat-close-btn" id="close-chat" aria-label="Cerrar chat">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+
+            <!-- Cuerpo de Mensajes -->
+            <div class="chat-messages-container" id="chat-messages">
+                <div class="message assistant">
+                    <div class="message-bubble">
+                        Hola, soy <strong>Unesito</strong>, tu asistente para las Normas de Convivencia y Régimen Disciplinario UNES. 👮‍♂️
+                        <br><br>
+                        Respondo dudas basadas exclusivamente en el Acuerdo N°0000692. ¿Qué deseas consultar hoy?
+                    </div>
+                    <span class="message-time" id="welcome-time">10:00 AM</span>
+                </div>
+
+                <!-- Botones de preguntas frecuentes -->
+                <div class="chat-suggestions" id="chat-suggestions">
+                    <p class="suggestion-title">Preguntas frecuentes:</p>
+                    <div class="suggestions-list">
+                        <button class="suggest-btn" data-query="¿Qué son faltas graves?">⚠️ ¿Qué son faltas graves?</button>
+                        <button class="suggest-btn" data-query="¿Cuáles son los derechos de los estudiantes?">🛡️ Mis derechos</button>
+                        <button class="suggest-btn" data-query="¿Cómo se usa el uniforme?">👔 Uso del uniforme</button>
+                        <button class="suggest-btn" data-query="¿Qué es el orden de mérito?">📊 Orden de mérito</button>
+                        <button class="suggest-btn" data-query="¿Cuáles son los deberes?">📋 Mis deberes</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Indicador de escritura -->
+            <div class="typing-indicator" id="typing-indicator" style="display: none;">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span>Unesito está consultando el Acuerdo N°0000692...</span>
+            </div>
+
+            <!-- Formulario del Chat -->
+            <form class="chat-input-area" id="chat-form">
+                <input type="text" id="chat-input" placeholder="Pregunta por artículo o tema (ej. artículo 90)..." autocomplete="off" required>
+                <button type="submit" class="send-btn" id="send-message-btn" aria-label="Enviar mensaje">
+                    <span class="material-symbols-outlined">send</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Audio de notificación -->
+    <audio id="notif-sound" src="https://assets.mixkit.co/active_storage/sfx/2357/2357-84.wav" preload="auto"></audio>
+
+    <script src="app.js"></script>
+</body>
+</html>
