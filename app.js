@@ -13,7 +13,6 @@ const AVATAR_EXPRESSIONS = {
     sad: "M46 56 Q50 53 54 56"
 };
 
-// DOM
 const searchInput = document.getElementById("search-input");
 const clearSearchBtn = document.getElementById("clear-search");
 const chaptersNav = document.getElementById("chapters-nav");
@@ -49,7 +48,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 async function loadNormasData() {
-    // 1) Si el HTML ya tiene NORMAS_DATA_INLINE, úsalo
     if (typeof NORMAS_DATA_INLINE !== 'undefined' && Array.isArray(NORMAS_DATA_INLINE) && NORMAS_DATA_INLINE.length > 0) {
         NORMAS = NORMAS_DATA_INLINE;
         console.log(`✅ ${NORMAS.length} artículos cargados desde index.html`);
@@ -57,7 +55,6 @@ async function loadNormasData() {
         return;
     }
 
-    // 2) Si no, carga normas.json
     try {
         const res = await fetch('normas.json', { cache: 'no-store' });
         if (res.ok) {
@@ -70,12 +67,12 @@ async function loadNormasData() {
         console.error("❌ Error cargando normas.json:", e);
     }
 
-    // 3) Error
     if (articlesGrid) {
         articlesGrid.innerHTML = `
             <div style="grid-column: 1/-1; text-align: center; padding: 40px; background: #FFF; border-radius: 16px;">
                 <span class="material-symbols-outlined" style="font-size: 48px; color: #EF4444;">error</span>
                 <h3 style="margin-top: 12px; color: #0A2A5C;">No se pudieron cargar los artículos</h3>
+                <p style="color: #64748B;">Verifica que <code>normas.json</code> exista en el servidor.</p>
             </div>`;
     }
 }
