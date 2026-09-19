@@ -45,13 +45,14 @@ const avatarMouth = document.getElementById("avatar-mouth");
 // INIT
 // ============================================================
 document.addEventListener("DOMContentLoaded", () => {
+    console.log("🚀 Unesito iniciando...");
     loadNormasData();
     setupEventListeners();
     updateWelcomeTime();
 });
 
-function loadNormasData() {
-    // 1) PRIORIDAD: Datos incrustados en index.html
+async function loadNormasData() {
+    // 1) PRIORIDAD: datos incrustados en index.html
     if (typeof NORMAS_DATA_INLINE !== 'undefined' && Array.isArray(NORMAS_DATA_INLINE) && NORMAS_DATA_INLINE.length > 0) {
         NORMAS = NORMAS_DATA_INLINE;
         console.log(`✅ ${NORMAS.length} artículos cargados desde index.html`);
@@ -60,21 +61,26 @@ function loadNormasData() {
     }
 
     // 2) FALLBACK: fetch a normas.json
-    fetch('normas.json')
-        .then(r => r.json())
-        .then(data => {
-            NORMAS = data;
+    try {
+        const res = await fetch('normas.json', { cache: 'no-store' });
+        if (res.ok) {
+            NORMAS = await res.json();
             console.log(`✅ ${NORMAS.length} artículos cargados desde normas.json`);
             renderArticles();
-        })
-        .catch(() => {
-            console.error("❌ No hay datos disponibles");
-            articlesGrid.innerHTML = `
-                <div style="grid-column: 1/-1; text-align: center; padding: 40px; background: #FFF; border-radius: 16px;">
-                    <span class="material-symbols-outlined" style="font-size: 48px; color: #EF4444;">error</span>
-                    <h3 style="margin-top: 12px; color: #0A2A5C;">Error al cargar los artículos</h3>
-                </div>`;
-        });
+            return;
+        }
+    } catch (e) { /* siguiente */ }
+
+    // 3) Si nada funcionó
+    console.error("❌ No se pudieron cargar los artículos");
+    if (articlesGrid) {
+        articlesGrid.innerHTML = `
+            <div style="grid-column: 1/-1; text-align: center; padding: 40px; background: #FFF; border-radius: 16px;">
+                <span class="material-symbols-outlined" style="font-size: 48px; color: #EF4444;">error</span>
+                <h3 style="margin-top: 12px; color: #0A2A5C;">Error al cargar los artículos</h3>
+                <p style="color: #64748B;">Verifica que los datos estén disponibles.</p>
+            </div>`;
+    }
 }
 
 // ============================================================
@@ -103,27 +109,25 @@ function normalizeText(text) {
 // RENDERIZADO
 // ============================================================
 function renderArticles() {
+    if (!articlesGrid) return;
     articlesGrid.innerHTML = "";
 
     const filtered = NORMAS.filter(art => {
-        const matchesChapter =
-            currentChapter === "all" ||
-            art.capitulo_num === parseInt(currentChapter);
-
+        const matchesChapter = currentChapter === "all" || art.capitulo_num === parseInt(currentChapter);
         const q = normalizeText(searchQuery);
-        const matchesSearch =
-            q === "" ||
+        const matchesSearch = q === "" ||
             normalizeText(art.numero).includes(q) ||
             normalizeText(art.titulo).includes(q) ||
             normalizeText(art.texto).includes(q) ||
             normalizeText(art.capitulo).includes(q) ||
             normalizeText(art.seccion).includes(q) ||
             (art.palabras_clave && art.palabras_clave.some(kw => normalizeText(kw).includes(q)));
-
         return matchesChapter && matchesSearch;
     });
 
-    articlesCount.textContent = `${filtered.length} ${filtered.length === 1 ? 'artículo' : 'artículos'}`;
+    if (articlesCount) {
+        articlesCount.textContent = `${filtered.length} ${filtered.length === 1 ? 'artículo' : 'artículos'}`;
+    }
 
     if (filtered.length === 0) {
         articlesGrid.innerHTML = `
@@ -167,24 +171,26 @@ function openModal(id) {
     const art = NORMAS.find(a => a.id === id);
     if (!art) return;
     selectedArticleForAsk = art;
-    modalCategory.textContent = art.capitulo;
-    modalTitle.textContent = `${art.numero}: ${art.titulo}`;
-    modalContent.innerHTML = (art.texto || "").replace(/\n/g, "<br>");
-    modalKeywords.innerHTML = "";
-    if (art.palabras_clave && art.palabras_clave.length) {
-        art.palabras_clave.forEach(kw => {
+    if (modalCategory) modalCategory.textContent = art.capitulo;
+    if (modalTitle) modalTitle.textContent = `${art.numero}: ${art.titulo}`;
+    if (modalContent) modalContent.innerHTML = (art.texto || "").replace(/\n/g, "<br>");
+    if (modalKeywords) {
+        modalKeywords.innerHTML = "";
+        (art.palabras_clave || []).forEach(kw => {
             const tag = document.createElement("span");
             tag.className = "keyword-tag";
             tag.textContent = kw;
             modalKeywords.appendChild(tag);
         });
     }
-    articleModal.style.display = "flex";
-    document.body.style.overflow = "hidden";
+    if (articleModal) {
+        articleModal.style.display = "flex";
+        document.body.style.overflow = "hidden";
+    }
 }
 
 function closeModal() {
-    articleModal.style.display = "none";
+    if (articleModal) articleModal.style.display = "none";
     document.body.style.overflow = "";
     selectedArticleForAsk = null;
 }
@@ -193,83 +199,101 @@ function closeModal() {
 // EVENT LISTENERS
 // ============================================================
 function setupEventListeners() {
-    searchInput.addEventListener("input", (e) => {
-        searchQuery = e.target.value;
-        clearSearchBtn.style.display = searchQuery.trim() !== "" ? "flex" : "none";
-        renderArticles();
-    });
+    if (searchInput) {
+        searchInput.addEventListener("input", (e) => {
+            searchQuery = e.target.value;
+            if (clearSearchBtn) clearSearchBtn.style.display = searchQuery.trim() !== "" ? "flex" : "none";
+            renderArticles();
+        });
+    }
 
-    clearSearchBtn.addEventListener("click", () => {
-        searchInput.value = "";
-        searchQuery = "";
-        clearSearchBtn.style.display = "none";
-        renderArticles();
-        searchInput.focus();
-    });
+    if (clearSearchBtn) {
+        clearSearchBtn.addEventListener("click", () => {
+            if (searchInput) searchInput.value = "";
+            searchQuery = "";
+            clearSearchBtn.style.display = "none";
+            renderArticles();
+            if (searchInput) searchInput.focus();
+        });
+    }
 
-    chaptersNav.addEventListener("click", (e) => {
-        const btn = e.target.closest(".chapter-btn");
-        if (!btn) return;
-        document.querySelectorAll(".chapter-btn").forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-        currentChapter = btn.getAttribute("data-cap");
-        currentSectionTitle.textContent = currentChapter === "all"
-            ? "Artículos de las Normas de Convivencia"
-            : btn.textContent.trim();
-        renderArticles();
-    });
+    if (chaptersNav) {
+        chaptersNav.addEventListener("click", (e) => {
+            const btn = e.target.closest(".chapter-btn");
+            if (!btn) return;
+            document.querySelectorAll(".chapter-btn").forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+            currentChapter = btn.getAttribute("data-cap");
+            if (currentSectionTitle) {
+                currentSectionTitle.textContent = currentChapter === "all"
+                    ? "Artículos de las Normas de Convivencia"
+                    : btn.textContent.trim();
+            }
+            renderArticles();
+        });
+    }
 
-    closeModalBtn.addEventListener("click", closeModal);
-    articleModal.addEventListener("click", (e) => {
-        if (e.target === articleModal) closeModal();
-    });
+    if (closeModalBtn) closeModalBtn.addEventListener("click", closeModal);
+    if (articleModal) {
+        articleModal.addEventListener("click", (e) => {
+            if (e.target === articleModal) closeModal();
+        });
+    }
 
-    modalAskBtn.addEventListener("click", () => {
-        if (selectedArticleForAsk) {
-            const q = `¿Qué dice el ${selectedArticleForAsk.numero}?`;
-            closeModal();
-            openChat();
-            handleUserMessage(q);
-        }
-    });
+    if (modalAskBtn) {
+        modalAskBtn.addEventListener("click", () => {
+            if (selectedArticleForAsk) {
+                const q = `¿Qué dice el ${selectedArticleForAsk.numero}?`;
+                closeModal();
+                openChat();
+                handleUserMessage(q);
+            }
+        });
+    }
 
-    avatarTrigger.addEventListener("click", () => {
-        if (chatWidget.style.display === "none" || !chatWidget.style.display) {
-            openChat();
-        } else {
-            closeChat();
-        }
-    });
+    if (avatarTrigger) {
+        avatarTrigger.addEventListener("click", () => {
+            if (!chatWidget.style.display || chatWidget.style.display === "none") {
+                openChat();
+            } else {
+                closeChat();
+            }
+        });
+    }
 
-    closeChatBtn.addEventListener("click", closeChat);
+    if (closeChatBtn) closeChatBtn.addEventListener("click", closeChat);
 
-    chatForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const text = chatInput.value.trim();
-        if (!text) return;
-        chatInput.value = "";
-        handleUserMessage(text);
-    });
+    if (chatForm) {
+        chatForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const text = chatInput.value.trim();
+            if (!text) return;
+            chatInput.value = "";
+            handleUserMessage(text);
+        });
+    }
 
-    chatMessages.addEventListener("click", (e) => {
-        const suggestBtn = e.target.closest(".suggest-btn");
-        if (suggestBtn) handleUserMessage(suggestBtn.getAttribute("data-query"));
-    });
+    if (chatMessages) {
+        chatMessages.addEventListener("click", (e) => {
+            const btn = e.target.closest(".suggest-btn");
+            if (btn) handleUserMessage(btn.getAttribute("data-query"));
+        });
+    }
 }
 
 // ============================================================
 // CHAT
 // ============================================================
 function openChat() {
-    chatWidget.style.display = "flex";
-    avatarBubble.style.display = "none";
-    notifBadge.style.display = "none";
-    chatInput.focus();
+    if (chatWidget) chatWidget.style.display = "flex";
+    if (avatarBubble) avatarBubble.style.display = "none";
+    if (notifBadge) notifBadge.style.display = "none";
+    if (chatInput) chatInput.focus();
     setAvatarMouth("smile");
 }
 
 function closeChat() {
-    chatWidget.style.display = "none";
+    if (chatWidget) chatWidget.style.display = "none";
 }
 
 function setAvatarMouth(name) {
@@ -311,10 +335,11 @@ async function handleUserMessage(messageText) {
 }
 
 function appendMessage(text, sender, article = null, fallback = null) {
+    if (!chatMessages) return;
     const msgDiv = document.createElement("div");
     msgDiv.className = `message ${sender}`;
-    let formatted = (text || "").replace(/\n/g, "<br>");
-    let bubble = `<div class="message-bubble">${formatted}`;
+    let bubble = `<div class="message-bubble">${(text || "").replace(/\n/g, "<br>")}`;
+
     if (article) {
         bubble += `<div class="chat-action-box">
             <button class="btn-chat-action secondary-btn read-article-chat-btn" data-id="${article.id}">
@@ -345,8 +370,9 @@ function appendMessage(text, sender, article = null, fallback = null) {
 }
 
 function showTypingIndicator(show) {
+    if (!typingIndicator) return;
     typingIndicator.style.display = show ? "flex" : "none";
-    if (show) {
+    if (show && chatMessages) {
         chatMessages.appendChild(typingIndicator);
         chatMessages.scrollTop = chatMessages.scrollHeight;
     }
@@ -360,7 +386,7 @@ function localChatEngine(userQuery) {
 
     if (["hola", "buenas", "saludos", "unesito", "buenos dias", "buenas tardes"].some(g => q.includes(g))) {
         return {
-            reply: "¡Hola! Soy **Unesito**, tu asistente virtual de las Normas de Convivencia UNES (Acuerdo N° 0000692). 👮‍♂️👋\n\n¿Sobre qué tema necesitas orientación hoy?",
+            reply: "¡Hola! Soy **Unesito**, tu asistente virtual de las Normas de Convivencia UNES (Acuerdo N° 0000692). 👮‍♂️👋\n\n¿Sobre qué tema necesitas orientación?",
             mood: "smile"
         };
     }
@@ -413,7 +439,7 @@ function localChatEngine(userQuery) {
     }
 
     return {
-        reply: "Lo siento, no encontré información exacta. ¿Puedes reformular tu pregunta?\n\nEjemplos: *'¿Cuáles son las faltas leves?'*, *'¿Qué dice el artículo 90?'*",
+        reply: "Lo siento, no encontré información exacta. ¿Puedes reformular tu pregunta?\n\nEjemplos: *'¿Cuáles son las faltas leves?'* o *'artículo 90'*",
         mood: "sad",
         fallback: {
             formLink: "https://forms.gle/9VAbMmq7XqdjMg6U6",
@@ -421,3 +447,5 @@ function localChatEngine(userQuery) {
         }
     };
 }
+
+console.log("✅ app.js cargado correctamente");
